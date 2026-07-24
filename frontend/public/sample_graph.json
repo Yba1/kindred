@@ -1,0 +1,5763 @@
+{
+ "center": "user",
+ "nodes": [
+  {
+   "id": "user",
+   "name": "You",
+   "score": 1,
+   "x": 590,
+   "y": 360,
+   "to": "agent-infra",
+   "from": "finance",
+   "seeking": "cofounder",
+   "stage": "building",
+   "center": true
+  },
+  {
+   "id": "p1",
+   "name": "Maya Chen",
+   "score": 0.14,
+   "x": 440,
+   "y": 360,
+   "to": "health-ai",
+   "from": "finance",
+   "seeking": "role",
+   "stage": "scaling"
+  },
+  {
+   "id": "p2",
+   "name": "Ilya Ito",
+   "score": 0.07,
+   "x": 695.15,
+   "y": 184.02,
+   "to": "fintech",
+   "from": "gov",
+   "seeking": "role",
+   "stage": "scaling"
+  },
+  {
+   "id": "p3",
+   "name": "Priya Petrov",
+   "score": 0.32,
+   "x": 453.3,
+   "y": 581.17,
+   "to": "devtools",
+   "from": "bigtech",
+   "seeking": "funding",
+   "stage": "building"
+  },
+  {
+   "id": "p4",
+   "name": "Tomas Kaur",
+   "score": 0.25,
+   "x": 420.39,
+   "y": 625.44,
+   "to": "devtools",
+   "from": "academia",
+   "seeking": "design-partner",
+   "stage": "scaling"
+  },
+  {
+   "id": "p5",
+   "name": "Nadia Marchetti",
+   "score": 0.25,
+   "x": 507.35,
+   "y": 485.17,
+   "to": "devtools",
+   "from": "bigtech",
+   "seeking": "role",
+   "stage": "idea"
+  },
+  {
+   "id": "p6",
+   "name": "Owen Barros",
+   "score": 0.14,
+   "x": 678.91,
+   "y": 544.72,
+   "to": "climate",
+   "from": "finance",
+   "seeking": "funding",
+   "stage": "scaling"
+  },
+  {
+   "id": "p7",
+   "name": "Sana Nakamura",
+   "score": 0.24,
+   "x": 331.05,
+   "y": 336.63,
+   "to": "health-ai",
+   "from": "academia",
+   "seeking": "cofounder",
+   "stage": "building"
+  },
+  {
+   "id": "p8",
+   "name": "Diego Adeyemi",
+   "score": 0.93,
+   "x": 903.27,
+   "y": 393.01,
+   "to": "agent-infra",
+   "from": "finance",
+   "seeking": "cofounder",
+   "stage": "scaling"
+  },
+  {
+   "id": "p9",
+   "name": "Freya Lundgren",
+   "score": 0.41,
+   "x": 499.99,
+   "y": 479.99,
+   "to": "devtools",
+   "from": "gov",
+   "seeking": "cofounder",
+   "stage": "building"
+  },
+  {
+   "id": "p10",
+   "name": "Kenji Silva",
+   "score": 0.25,
+   "x": 464.54,
+   "y": 522.12,
+   "to": "devtools",
+   "from": "gov",
+   "seeking": "design-partner",
+   "stage": "scaling"
+  },
+  {
+   "id": "p11",
+   "name": "Amara Kowalski",
+   "score": 0.14,
+   "x": 495.11,
+   "y": 117.93,
+   "to": "robotics",
+   "from": "finance",
+   "seeking": "role",
+   "stage": "idea"
+  },
+  {
+   "id": "p12",
+   "name": "Lucas Yilmaz",
+   "score": 0.07,
+   "x": 790.17,
+   "y": 116.78,
+   "to": "fintech",
+   "from": "bigtech",
+   "seeking": "design-partner",
+   "stage": "idea"
+  },
+  {
+   "id": "p13",
+   "name": "Ines Osei",
+   "score": 0.32,
+   "x": 492.96,
+   "y": 474.38,
+   "to": "devtools",
+   "from": "design",
+   "seeking": "first-eng",
+   "stage": "building"
+  },
+  {
+   "id": "p14",
+   "name": "Rafael Rahman",
+   "score": 0.25,
+   "x": 455.04,
+   "y": 514.31,
+   "to": "devtools",
+   "from": "medicine",
+   "seeking": "first-eng",
+   "stage": "idea"
+  },
+  {
+   "id": "p15",
+   "name": "Yuki Haddad",
+   "score": 0.07,
+   "x": 509.79,
+   "y": 112.68,
+   "to": "robotics",
+   "from": "design",
+   "seeking": "design-partner",
+   "stage": "idea"
+  },
+  {
+   "id": "p16",
+   "name": "Noor Sørensen",
+   "score": 0.21,
+   "x": 497.33,
+   "y": 58.94,
+   "to": "robotics",
+   "from": "finance",
+   "seeking": "role",
+   "stage": "building"
+  },
+  {
+   "id": "p17",
+   "name": "Elias Andersen",
+   "score": 0.07,
+   "x": 693.73,
+   "y": 251.65,
+   "to": "fintech",
+   "from": "academia",
+   "seeking": "funding",
+   "stage": "idea"
+  },
+  {
+   "id": "p18",
+   "name": "Talia Duarte",
+   "score": 0.15,
+   "x": 733.97,
+   "y": 214.06,
+   "to": "fintech",
+   "from": "academia",
+   "seeking": "design-partner",
+   "stage": "building"
+  },
+  {
+   "id": "p19",
+   "name": "Marco Novak",
+   "score": 0.86,
+   "x": 840.58,
+   "y": 429.35,
+   "to": "agent-infra",
+   "from": "gov",
+   "seeking": "cofounder",
+   "stage": "scaling"
+  },
+  {
+   "id": "p20",
+   "name": "Zara Diallo",
+   "score": 0.85,
+   "x": 892.29,
+   "y": 448.56,
+   "to": "agent-infra",
+   "from": "gov",
+   "seeking": "funding",
+   "stage": "building"
+  },
+  {
+   "id": "p21",
+   "name": "Hugo Moreau",
+   "score": 0.31,
+   "x": 479.96,
+   "y": 461.94,
+   "to": "devtools",
+   "from": "finance",
+   "seeking": "role",
+   "stage": "idea"
+  },
+  {
+   "id": "p22",
+   "name": "Leila Farouk",
+   "score": 0.25,
+   "x": 437.54,
+   "y": 497.04,
+   "to": "devtools",
+   "from": "academia",
+   "seeking": "design-partner",
+   "stage": "idea"
+  },
+  {
+   "id": "p23",
+   "name": "Anders Lindqvist",
+   "score": 0.16,
+   "x": 785.95,
+   "y": 189.11,
+   "to": "fintech",
+   "from": "bigtech",
+   "seeking": "cofounder",
+   "stage": "scaling"
+  },
+  {
+   "id": "p24",
+   "name": "Mei Ferreira",
+   "score": 0.15,
+   "x": 534.04,
+   "y": 50.01,
+   "to": "robotics",
+   "from": "gov",
+   "seeking": "design-partner",
+   "stage": "building"
+  },
+  {
+   "id": "p25",
+   "name": "Idris Bianchi",
+   "score": 0.07,
+   "x": 449.62,
+   "y": 307.16,
+   "to": "health-ai",
+   "from": "design",
+   "seeking": "design-partner",
+   "stage": "idea"
+  },
+  {
+   "id": "p26",
+   "name": "Clara Reyes",
+   "score": 0.21,
+   "x": 399.25,
+   "y": 284.91,
+   "to": "health-ai",
+   "from": "finance",
+   "seeking": "funding",
+   "stage": "building"
+  },
+  {
+   "id": "p27",
+   "name": "Ravi Okafor",
+   "score": 0.07,
+   "x": 349.52,
+   "y": 261.15,
+   "to": "health-ai",
+   "from": "bigtech",
+   "seeking": "funding",
+   "stage": "idea"
+  },
+  {
+   "id": "p28",
+   "name": "Sofia Mwangi",
+   "score": 0.84,
+   "x": 879.52,
+   "y": 484.12,
+   "to": "agent-infra",
+   "from": "finance",
+   "seeking": "first-eng",
+   "stage": "scaling"
+  },
+  {
+   "id": "p29",
+   "name": "Jonas Costa",
+   "score": 0.07,
+   "x": 605.51,
+   "y": 509.2,
+   "to": "climate",
+   "from": "academia",
+   "seeking": "design-partner",
+   "stage": "idea"
+  },
+  {
+   "id": "p30",
+   "name": "Aisha Vidal",
+   "score": 0.16,
+   "x": 757.77,
+   "y": 242.19,
+   "to": "fintech",
+   "from": "medicine",
+   "seeking": "cofounder",
+   "stage": "idea"
+  },
+  {
+   "id": "p31",
+   "name": "Pavel Chen",
+   "score": 0.14,
+   "x": 609.12,
+   "y": 619.3,
+   "to": "climate",
+   "from": "finance",
+   "seeking": "role",
+   "stage": "idea"
+  },
+  {
+   "id": "p32",
+   "name": "Nina Ito",
+   "score": 0.85,
+   "x": 871.55,
+   "y": 501.25,
+   "to": "agent-infra",
+   "from": "design",
+   "seeking": "design-partner",
+   "stage": "building"
+  },
+  {
+   "id": "p33",
+   "name": "Omar Petrov",
+   "score": 0.15,
+   "x": 596.54,
+   "y": 509.86,
+   "to": "climate",
+   "from": "academia",
+   "seeking": "first-eng",
+   "stage": "building"
+  },
+  {
+   "id": "p34",
+   "name": "Greta Kaur",
+   "score": 0.25,
+   "x": 415.47,
+   "y": 467.53,
+   "to": "devtools",
+   "from": "academia",
+   "seeking": "funding",
+   "stage": "scaling"
+  },
+  {
+   "id": "p35",
+   "name": "Kai Marchetti",
+   "score": 0.86,
+   "x": 816.91,
+   "y": 486.93,
+   "to": "agent-infra",
+   "from": "medicine",
+   "seeking": "cofounder",
+   "stage": "idea"
+  },
+  {
+   "id": "p36",
+   "name": "Rosa Barros",
+   "score": 0.14,
+   "x": 317.42,
+   "y": 202.12,
+   "to": "health-ai",
+   "from": "finance",
+   "seeking": "design-partner",
+   "stage": "idea"
+  },
+  {
+   "id": "p37",
+   "name": "Aleks Nakamura",
+   "score": 0.15,
+   "x": 592.46,
+   "y": 210.02,
+   "to": "robotics",
+   "from": "gov",
+   "seeking": "role",
+   "stage": "building"
+  },
+  {
+   "id": "p38",
+   "name": "Hana Adeyemi",
+   "score": 0.07,
+   "x": 596.44,
+   "y": 155.1,
+   "to": "robotics",
+   "from": "academia",
+   "seeking": "first-eng",
+   "stage": "scaling"
+  },
+  {
+   "id": "p39",
+   "name": "Milo Lundgren",
+   "score": 0.14,
+   "x": 602.06,
+   "y": 100.28,
+   "to": "robotics",
+   "from": "finance",
+   "seeking": "role",
+   "stage": "idea"
+  },
+  {
+   "id": "p40",
+   "name": "Farah Silva",
+   "score": 0.07,
+   "x": 570.67,
+   "y": 674.41,
+   "to": "climate",
+   "from": "bigtech",
+   "seeking": "role",
+   "stage": "scaling"
+  },
+  {
+   "id": "p41",
+   "name": "Bruno Kowalski",
+   "score": 0.84,
+   "x": 713.8,
+   "y": 444.7,
+   "to": "agent-infra",
+   "from": "finance",
+   "seeking": "first-eng",
+   "stage": "idea"
+  },
+  {
+   "id": "p42",
+   "name": "Lena Yilmaz",
+   "score": 0.15,
+   "x": 776.15,
+   "y": 274.13,
+   "to": "fintech",
+   "from": "gov",
+   "seeking": "role",
+   "stage": "building"
+  },
+  {
+   "id": "p43",
+   "name": "Samir Osei",
+   "score": 0.07,
+   "x": 617.61,
+   "y": 101.47,
+   "to": "robotics",
+   "from": "medicine",
+   "seeking": "design-partner",
+   "stage": "idea"
+  },
+  {
+   "id": "p44",
+   "name": "Iris Rahman",
+   "score": 0.25,
+   "x": 300.14,
+   "y": 483.3,
+   "to": "devtools",
+   "from": "medicine",
+   "seeking": "first-eng",
+   "stage": "scaling"
+  },
+  {
+   "id": "p45",
+   "name": "Theo Haddad",
+   "score": 0.16,
+   "x": 610.4,
+   "y": 211.39,
+   "to": "robotics",
+   "from": "academia",
+   "seeking": "cofounder",
+   "stage": "idea"
+  },
+  {
+   "id": "p46",
+   "name": "Anya Sørensen",
+   "score": 0.14,
+   "x": 620.92,
+   "y": 157.35,
+   "to": "robotics",
+   "from": "finance",
+   "seeking": "design-partner",
+   "stage": "scaling"
+  },
+  {
+   "id": "p47",
+   "name": "Nico Andersen",
+   "score": 0.21,
+   "x": 633.06,
+   "y": 103.59,
+   "to": "robotics",
+   "from": "finance",
+   "seeking": "first-eng",
+   "stage": "building"
+  },
+  {
+   "id": "p48",
+   "name": "Dalia Duarte",
+   "score": 0.23,
+   "x": 350.09,
+   "y": 155.87,
+   "to": "health-ai",
+   "from": "finance",
+   "seeking": "cofounder",
+   "stage": "scaling"
+  },
+  {
+   "id": "p49",
+   "name": "Emil Novak",
+   "score": 0.31,
+   "x": 447.96,
+   "y": 408.21,
+   "to": "devtools",
+   "from": "finance",
+   "seeking": "role",
+   "stage": "scaling"
+  },
+  {
+   "id": "p50",
+   "name": "Vera Diallo",
+   "score": 0.16,
+   "x": 633.02,
+   "y": 159.56,
+   "to": "robotics",
+   "from": "medicine",
+   "seeking": "cofounder",
+   "stage": "scaling"
+  },
+  {
+   "id": "p51",
+   "name": "Arun Moreau",
+   "score": 0.3,
+   "x": 399.76,
+   "y": 182.77,
+   "to": "health-ai",
+   "from": "finance",
+   "seeking": "cofounder",
+   "stage": "building"
+  },
+  {
+   "id": "p52",
+   "name": "Signe Farouk",
+   "score": 0.86,
+   "x": 817.24,
+   "y": 578.15,
+   "to": "agent-infra",
+   "from": "medicine",
+   "seeking": "cofounder",
+   "stage": "scaling"
+  },
+  {
+   "id": "p53",
+   "name": "Malik Lindqvist",
+   "score": 0.16,
+   "x": 628.04,
+   "y": 214.9,
+   "to": "robotics",
+   "from": "medicine",
+   "seeking": "cofounder",
+   "stage": "scaling"
+  },
+  {
+   "id": "p54",
+   "name": "Juno Ferreira",
+   "score": 0.25,
+   "x": 391.48,
+   "y": 411.15,
+   "to": "devtools",
+   "from": "gov",
+   "seeking": "funding",
+   "stage": "idea"
+  },
+  {
+   "id": "p55",
+   "name": "Piotr Bianchi",
+   "score": 0.15,
+   "x": 516.55,
+   "y": 609.41,
+   "to": "climate",
+   "from": "design",
+   "seeking": "design-partner",
+   "stage": "building"
+  },
+  {
+   "id": "p56",
+   "name": "Layla Reyes",
+   "score": 0.3,
+   "x": 496.49,
+   "y": 660.8,
+   "to": "climate",
+   "from": "finance",
+   "seeking": "cofounder",
+   "stage": "building"
+  },
+  {
+   "id": "p57",
+   "name": "Cato Okafor",
+   "score": 0.24,
+   "x": 736.79,
+   "y": 329.14,
+   "to": "fintech",
+   "from": "bigtech",
+   "seeking": "cofounder",
+   "stage": "building"
+  },
+  {
+   "id": "p58",
+   "name": "Rhea Mwangi",
+   "score": 0.16,
+   "x": 791.23,
+   "y": 320.84,
+   "to": "fintech",
+   "from": "academia",
+   "seeking": "cofounder",
+   "stage": "idea"
+  },
+  {
+   "id": "p59",
+   "name": "Vikram Costa",
+   "score": 0.07,
+   "x": 678.27,
+   "y": 115.44,
+   "to": "robotics",
+   "from": "academia",
+   "seeking": "role",
+   "stage": "idea"
+  },
+  {
+   "id": "p60",
+   "name": "Esme Vidal",
+   "score": 0.91,
+   "x": 789.49,
+   "y": 603.78,
+   "to": "agent-infra",
+   "from": "finance",
+   "seeking": "design-partner",
+   "stage": "building"
+  }
+ ],
+ "edges": [
+  {
+   "source": "user",
+   "target": "p1",
+   "weight": 0.14,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p2",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p3",
+   "weight": 0.32,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p4",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p5",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p6",
+   "weight": 0.14,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p7",
+   "weight": 0.24,
+   "features": [
+    0.05,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p8",
+   "weight": 0.93,
+   "features": [
+    1,
+    1,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p9",
+   "weight": 0.41,
+   "features": [
+    0.3,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p10",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p11",
+   "weight": 0.14,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p12",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p13",
+   "weight": 0.32,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p14",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p15",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p16",
+   "weight": 0.21,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p17",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p18",
+   "weight": 0.15,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p19",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p20",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p21",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p22",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p23",
+   "weight": 0.16,
+   "features": [
+    0.05,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p24",
+   "weight": 0.15,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p25",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p26",
+   "weight": 0.21,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p27",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p28",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p29",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p30",
+   "weight": 0.16,
+   "features": [
+    0.05,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p31",
+   "weight": 0.14,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p32",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p33",
+   "weight": 0.15,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p34",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p35",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p36",
+   "weight": 0.14,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p37",
+   "weight": 0.15,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p38",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p39",
+   "weight": 0.14,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p40",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p41",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p42",
+   "weight": 0.15,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p43",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p44",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p45",
+   "weight": 0.16,
+   "features": [
+    0.05,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p46",
+   "weight": 0.14,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p47",
+   "weight": 0.21,
+   "features": [
+    0.05,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p48",
+   "weight": 0.23,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p49",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p50",
+   "weight": 0.16,
+   "features": [
+    0.05,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p51",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p52",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p53",
+   "weight": 0.16,
+   "features": [
+    0.05,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p54",
+   "weight": 0.25,
+   "features": [
+    0.3,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p55",
+   "weight": 0.15,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p56",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p57",
+   "weight": 0.24,
+   "features": [
+    0.05,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p58",
+   "weight": 0.16,
+   "features": [
+    0.05,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p59",
+   "weight": 0.07,
+   "features": [
+    0.05,
+    0,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "user",
+   "target": "p60",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p7",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p11",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p16",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p25",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p26",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p27",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p28",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p36",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p39",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p46",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p47",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p48",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p1",
+   "target": "p51",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p12",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p17",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p18",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p23",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p30",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p42",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p57",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p2",
+   "target": "p58",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p4",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p5",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p9",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p10",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p13",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p14",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p21",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p22",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p34",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p44",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p49",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p3",
+   "target": "p54",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p5",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p9",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p10",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p13",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p14",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p21",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p22",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p34",
+   "weight": 0.98,
+   "features": [
+    1,
+    1,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p44",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p49",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p4",
+   "target": "p54",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p9",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p10",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p13",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p14",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p21",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p22",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p34",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p44",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p49",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p5",
+   "target": "p54",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p6",
+   "target": "p29",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p6",
+   "target": "p31",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p6",
+   "target": "p33",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p6",
+   "target": "p40",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p6",
+   "target": "p46",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p6",
+   "target": "p55",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p6",
+   "target": "p56",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p25",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p26",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p27",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p36",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p38",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p45",
+   "weight": 0.4,
+   "features": [
+    0.3,
+    0.65,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p48",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p50",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p51",
+   "weight": 0.94,
+   "features": [
+    1,
+    0.35,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p53",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p7",
+   "target": "p59",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p9",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p19",
+   "weight": 0.94,
+   "features": [
+    1,
+    0.35,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p20",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p21",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p28",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p32",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p35",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p41",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p48",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p49",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p52",
+   "weight": 0.94,
+   "features": [
+    1,
+    0.35,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p8",
+   "target": "p60",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p10",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p13",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p14",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p19",
+   "weight": 0.4,
+   "features": [
+    0.3,
+    0.65,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p20",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p21",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p22",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p34",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p35",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p44",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p49",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p52",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p9",
+   "target": "p54",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p13",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p14",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p19",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p20",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p21",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p22",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p34",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p44",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p49",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p10",
+   "target": "p54",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p15",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p16",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p24",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p26",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p36",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p37",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p38",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p39",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p41",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p43",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p45",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p46",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p47",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p48",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p50",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p51",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p53",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p11",
+   "target": "p59",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p17",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p18",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p23",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p27",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p30",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p40",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p42",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p57",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p12",
+   "target": "p58",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p14",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p21",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p22",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p32",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p34",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p44",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p49",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p13",
+   "target": "p54",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p21",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p22",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p34",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p35",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p44",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p49",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p52",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p14",
+   "target": "p54",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p16",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p24",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p25",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p37",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p38",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p39",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p43",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p45",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p46",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p47",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p50",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p53",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p15",
+   "target": "p59",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p24",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p26",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p36",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p37",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p38",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p39",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p43",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p45",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p46",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p47",
+   "weight": 0.98,
+   "features": [
+    1,
+    1,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p48",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p50",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p51",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p53",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p16",
+   "target": "p59",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p18",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p22",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p23",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p29",
+   "weight": 0.46,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p30",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p33",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p42",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p57",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p17",
+   "target": "p58",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p18",
+   "target": "p23",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p18",
+   "target": "p29",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p18",
+   "target": "p30",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p18",
+   "target": "p33",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p18",
+   "target": "p42",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p18",
+   "target": "p57",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p18",
+   "target": "p58",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p20",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p28",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p32",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p35",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p41",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p52",
+   "weight": 0.94,
+   "features": [
+    1,
+    0.35,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p54",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p19",
+   "target": "p60",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p24",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p28",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p32",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p35",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p41",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p52",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p54",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p20",
+   "target": "p60",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p22",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p28",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p34",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p41",
+   "weight": 0.46,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p44",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p49",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p54",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p21",
+   "target": "p60",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p22",
+   "target": "p34",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p22",
+   "target": "p44",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p22",
+   "target": "p49",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p22",
+   "target": "p54",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p23",
+   "target": "p30",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p23",
+   "target": "p40",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p23",
+   "target": "p42",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p23",
+   "target": "p56",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p23",
+   "target": "p57",
+   "weight": 0.93,
+   "features": [
+    1,
+    1,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p23",
+   "target": "p58",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p37",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p38",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p39",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p43",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p45",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p46",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p47",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p50",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p53",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p24",
+   "target": "p59",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p25",
+   "target": "p26",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p25",
+   "target": "p27",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p25",
+   "target": "p36",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p25",
+   "target": "p48",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p25",
+   "target": "p51",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p27",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p36",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p39",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p46",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p47",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p48",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p51",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p26",
+   "target": "p60",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p27",
+   "target": "p36",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p27",
+   "target": "p48",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p27",
+   "target": "p51",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p28",
+   "target": "p32",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p28",
+   "target": "p35",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p28",
+   "target": "p41",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p28",
+   "target": "p49",
+   "weight": 0.46,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p28",
+   "target": "p52",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p28",
+   "target": "p60",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p29",
+   "target": "p31",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p29",
+   "target": "p33",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p29",
+   "target": "p40",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p29",
+   "target": "p55",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p29",
+   "target": "p56",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p29",
+   "target": "p58",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p30",
+   "target": "p35",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p30",
+   "target": "p42",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p30",
+   "target": "p56",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p30",
+   "target": "p57",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p30",
+   "target": "p58",
+   "weight": 0.94,
+   "features": [
+    1,
+    0.35,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p31",
+   "target": "p33",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p31",
+   "target": "p40",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p31",
+   "target": "p41",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p31",
+   "target": "p55",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p31",
+   "target": "p56",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p32",
+   "target": "p35",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p32",
+   "target": "p41",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p32",
+   "target": "p52",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p32",
+   "target": "p60",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p33",
+   "target": "p40",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p33",
+   "target": "p55",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p33",
+   "target": "p56",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p33",
+   "target": "p58",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p34",
+   "target": "p44",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p34",
+   "target": "p49",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p34",
+   "target": "p54",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p35",
+   "target": "p41",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p35",
+   "target": "p44",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p35",
+   "target": "p52",
+   "weight": 0.93,
+   "features": [
+    1,
+    1,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p35",
+   "target": "p60",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p36",
+   "target": "p39",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p36",
+   "target": "p46",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p36",
+   "target": "p47",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p36",
+   "target": "p48",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p36",
+   "target": "p51",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p38",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p39",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p43",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p45",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p46",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p47",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p50",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p53",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p37",
+   "target": "p59",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p39",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p43",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p45",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p46",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p47",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p50",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p53",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p38",
+   "target": "p59",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p41",
+   "weight": 0.29,
+   "features": [
+    0.05,
+    0.65,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p43",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p45",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p46",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p47",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p48",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p50",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p51",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p53",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p39",
+   "target": "p59",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p40",
+   "target": "p55",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p40",
+   "target": "p56",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p40",
+   "target": "p57",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p41",
+   "target": "p49",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p41",
+   "target": "p52",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p41",
+   "target": "p60",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p42",
+   "target": "p57",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p42",
+   "target": "p58",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p43",
+   "target": "p45",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p43",
+   "target": "p46",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p43",
+   "target": "p47",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p43",
+   "target": "p50",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p43",
+   "target": "p53",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p43",
+   "target": "p59",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p44",
+   "target": "p49",
+   "weight": 0.92,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    1
+   ]
+  },
+  {
+   "source": "p44",
+   "target": "p52",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p44",
+   "target": "p54",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p46",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p47",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p48",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p50",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p51",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p53",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p58",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p45",
+   "target": "p59",
+   "weight": 0.91,
+   "features": [
+    1,
+    1,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p46",
+   "target": "p47",
+   "weight": 0.84,
+   "features": [
+    1,
+    1,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p46",
+   "target": "p48",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p46",
+   "target": "p50",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p46",
+   "target": "p51",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p46",
+   "target": "p53",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p46",
+   "target": "p59",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p47",
+   "target": "p48",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p47",
+   "target": "p50",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p47",
+   "target": "p51",
+   "weight": 0.39,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p47",
+   "target": "p53",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p47",
+   "target": "p59",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.85,
+    0.25
+   ]
+  },
+  {
+   "source": "p48",
+   "target": "p50",
+   "weight": 0.41,
+   "features": [
+    0.3,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p48",
+   "target": "p51",
+   "weight": 0.93,
+   "features": [
+    1,
+    1,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p48",
+   "target": "p53",
+   "weight": 0.41,
+   "features": [
+    0.3,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p49",
+   "target": "p54",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p49",
+   "target": "p60",
+   "weight": 0.31,
+   "features": [
+    0.3,
+    0.65,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p50",
+   "target": "p51",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p50",
+   "target": "p52",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p50",
+   "target": "p53",
+   "weight": 1,
+   "features": [
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p50",
+   "target": "p59",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p51",
+   "target": "p53",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p51",
+   "target": "p56",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p52",
+   "target": "p53",
+   "weight": 0.3,
+   "features": [
+    0.05,
+    0.65,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p52",
+   "target": "p60",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p53",
+   "target": "p59",
+   "weight": 0.77,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    0.25
+   ]
+  },
+  {
+   "source": "p55",
+   "target": "p56",
+   "weight": 0.85,
+   "features": [
+    1,
+    0.35,
+    0.1,
+    1
+   ]
+  },
+  {
+   "source": "p56",
+   "target": "p57",
+   "weight": 0.41,
+   "features": [
+    0.3,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "source": "p56",
+   "target": "p58",
+   "weight": 0.34,
+   "features": [
+    0.3,
+    0,
+    1,
+    0.25
+   ]
+  },
+  {
+   "source": "p57",
+   "target": "p58",
+   "weight": 0.86,
+   "features": [
+    1,
+    0.35,
+    1,
+    0.25
+   ]
+  }
+ ],
+ "reasons": {
+  "p1": [
+   "same trajectory: finance → health AI",
+   "finance background, now in health AI"
+  ],
+  "p2": [
+   "government background, now in fintech"
+  ],
+  "p3": [
+   "adjacent problem space: devtools touches your work",
+   "same stage: building"
+  ],
+  "p4": [
+   "adjacent problem space: devtools touches your work",
+   "academia background, now in devtools"
+  ],
+  "p5": [
+   "adjacent problem space: devtools touches your work",
+   "big tech background, now in devtools"
+  ],
+  "p6": [
+   "same trajectory: finance → climate tech",
+   "finance background, now in climate tech"
+  ],
+  "p7": [
+   "you're both looking for a cofounder",
+   "same stage: building"
+  ],
+  "p8": [
+   "same trajectory: finance → agent infra",
+   "working the same problem space: agent infra",
+   "you're both looking for a cofounder"
+  ],
+  "p9": [
+   "adjacent problem space: devtools touches your work",
+   "you're both looking for a cofounder",
+   "same stage: building"
+  ],
+  "p10": [
+   "adjacent problem space: devtools touches your work",
+   "government background, now in devtools"
+  ],
+  "p11": [
+   "same trajectory: finance → robotics",
+   "finance background, now in robotics"
+  ],
+  "p12": [
+   "big tech background, now in fintech"
+  ],
+  "p13": [
+   "adjacent problem space: devtools touches your work",
+   "same stage: building"
+  ],
+  "p14": [
+   "adjacent problem space: devtools touches your work",
+   "medicine background, now in devtools"
+  ],
+  "p15": [
+   "design background, now in robotics"
+  ],
+  "p16": [
+   "same trajectory: finance → robotics",
+   "same stage: building"
+  ],
+  "p17": [
+   "academia background, now in fintech"
+  ],
+  "p18": [
+   "same stage: building",
+   "academia background, now in fintech"
+  ],
+  "p19": [
+   "working the same problem space: agent infra",
+   "you're both looking for a cofounder"
+  ],
+  "p20": [
+   "working the same problem space: agent infra",
+   "same stage: building"
+  ],
+  "p21": [
+   "same trajectory: finance → devtools",
+   "adjacent problem space: devtools touches your work"
+  ],
+  "p22": [
+   "adjacent problem space: devtools touches your work",
+   "academia background, now in devtools"
+  ],
+  "p23": [
+   "you're both looking for a cofounder",
+   "big tech background, now in fintech"
+  ],
+  "p24": [
+   "same stage: building",
+   "government background, now in robotics"
+  ],
+  "p25": [
+   "design background, now in health AI"
+  ],
+  "p26": [
+   "same trajectory: finance → health AI",
+   "same stage: building"
+  ],
+  "p27": [
+   "big tech background, now in health AI"
+  ],
+  "p28": [
+   "same trajectory: finance → agent infra",
+   "working the same problem space: agent infra"
+  ],
+  "p29": [
+   "academia background, now in climate tech"
+  ],
+  "p30": [
+   "you're both looking for a cofounder",
+   "medicine background, now in fintech"
+  ],
+  "p31": [
+   "same trajectory: finance → climate tech",
+   "finance background, now in climate tech"
+  ],
+  "p32": [
+   "working the same problem space: agent infra",
+   "same stage: building"
+  ],
+  "p33": [
+   "same stage: building",
+   "academia background, now in climate tech"
+  ],
+  "p34": [
+   "adjacent problem space: devtools touches your work",
+   "academia background, now in devtools"
+  ],
+  "p35": [
+   "working the same problem space: agent infra",
+   "you're both looking for a cofounder"
+  ],
+  "p36": [
+   "same trajectory: finance → health AI",
+   "finance background, now in health AI"
+  ],
+  "p37": [
+   "same stage: building",
+   "government background, now in robotics"
+  ],
+  "p38": [
+   "academia background, now in robotics"
+  ],
+  "p39": [
+   "same trajectory: finance → robotics",
+   "finance background, now in robotics"
+  ],
+  "p40": [
+   "big tech background, now in climate tech"
+  ],
+  "p41": [
+   "same trajectory: finance → agent infra",
+   "working the same problem space: agent infra"
+  ],
+  "p42": [
+   "same stage: building",
+   "government background, now in fintech"
+  ],
+  "p43": [
+   "medicine background, now in robotics"
+  ],
+  "p44": [
+   "adjacent problem space: devtools touches your work",
+   "medicine background, now in devtools"
+  ],
+  "p45": [
+   "you're both looking for a cofounder",
+   "academia background, now in robotics"
+  ],
+  "p46": [
+   "same trajectory: finance → robotics",
+   "finance background, now in robotics"
+  ],
+  "p47": [
+   "same trajectory: finance → robotics",
+   "same stage: building"
+  ],
+  "p48": [
+   "same trajectory: finance → health AI",
+   "you're both looking for a cofounder"
+  ],
+  "p49": [
+   "same trajectory: finance → devtools",
+   "adjacent problem space: devtools touches your work"
+  ],
+  "p50": [
+   "you're both looking for a cofounder",
+   "medicine background, now in robotics"
+  ],
+  "p51": [
+   "same trajectory: finance → health AI",
+   "you're both looking for a cofounder",
+   "same stage: building"
+  ],
+  "p52": [
+   "working the same problem space: agent infra",
+   "you're both looking for a cofounder"
+  ],
+  "p53": [
+   "you're both looking for a cofounder",
+   "medicine background, now in robotics"
+  ],
+  "p54": [
+   "adjacent problem space: devtools touches your work",
+   "government background, now in devtools"
+  ],
+  "p55": [
+   "same stage: building",
+   "design background, now in climate tech"
+  ],
+  "p56": [
+   "same trajectory: finance → climate tech",
+   "you're both looking for a cofounder",
+   "same stage: building"
+  ],
+  "p57": [
+   "you're both looking for a cofounder",
+   "same stage: building"
+  ],
+  "p58": [
+   "you're both looking for a cofounder",
+   "academia background, now in fintech"
+  ],
+  "p59": [
+   "academia background, now in robotics"
+  ],
+  "p60": [
+   "same trajectory: finance → agent infra",
+   "working the same problem space: agent infra",
+   "same stage: building"
+  ]
+ },
+ "meta": {
+  "featureNames": [
+   "topic",
+   "trajectory",
+   "seeking",
+   "stage"
+  ],
+  "weights": [
+   0.7,
+   0.1,
+   0.1,
+   0.1
+  ],
+  "generation": 1,
+  "source": "sample_graph.json (stub — workstream A not wired yet)",
+  "vocab": {
+   "to": {
+    "agent-infra": "agent infra",
+    "climate": "climate tech",
+    "devtools": "devtools",
+    "health-ai": "health AI",
+    "robotics": "robotics",
+    "fintech": "fintech"
+   },
+   "from": {
+    "finance": "finance",
+    "academia": "academia",
+    "bigtech": "big tech",
+    "design": "design",
+    "medicine": "medicine",
+    "gov": "government"
+   },
+   "seeking": {
+    "cofounder": "a cofounder",
+    "first-eng": "a first engineer",
+    "design-partner": "a design partner",
+    "funding": "a pre-seed lead",
+    "role": "a founding role"
+   }
+  }
+ }
+}
