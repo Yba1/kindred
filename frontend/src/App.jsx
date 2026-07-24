@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ForceGraph from './graph/ForceGraph.jsx'
 import ReasoningPanel from './panel/ReasoningPanel.jsx'
+import IntakeForm from './intake/IntakeForm.jsx'
 import { loadGraph } from './data/loadGraph.js'
 import { GENERATIONS, DEFAULT_GENERATION } from './weights/vectors.js'
 import { FEATURE_NAMES, normalizeWeights } from './weights/rescore.js'
 import { domainColor } from './graph/render.js'
 
 export default function App() {
+  const [phase, setPhase] = useState('intake') // 'intake' | 'graph'
+  const [intakeBusy, setIntakeBusy] = useState(false)
   const [graph, setGraph] = useState(null)
   const [source, setSource] = useState('loading')
   const [error, setError] = useState(null)
@@ -18,18 +21,22 @@ export default function App() {
   const controllerRef = useRef(null)
   const lastScorePush = useRef(0)
 
-  useEffect(() => {
-    let cancelled = false
-    loadGraph()
+  // Drop in who you are -> the graph blooms around it. loadGraph() POSTs
+  // {name, context, top_k} to the real backend and falls back to the stub
+  // payload on any failure, so this is never a dead end even with the
+  // backend down — it only throws if the stub itself is broken.
+  const beginGraph = useCallback((profile = {}) => {
+    setIntakeBusy(true)
+    loadGraph(profile)
       .then(({ graph: g, warnings, source: src }) => {
-        if (cancelled) return
         if (warnings.length) console.warn('[kindred] graph payload warnings:', warnings)
         setGraph(g)
         setSource(src)
         setScores(new Map(g.nodes.map((n) => [n.id, n.score])))
+        setPhase('graph')
       })
-      .catch((err) => !cancelled && setError(err.message))
-    return () => { cancelled = true }
+      .catch((err) => setError(err.message))
+      .finally(() => setIntakeBusy(false))
   }, [])
 
   /** The money shot. Re-scores every edge and lets the layout flow into it. */
@@ -93,6 +100,10 @@ export default function App() {
         <p className="panel-note">the stub lives at <code>public/sample_graph.json</code>.</p>
       </div>
     )
+  }
+
+  if (phase === 'intake') {
+    return <IntakeForm onSubmit={beginGraph} onSkip={() => beginGraph({})} busy={intakeBusy} />
   }
 
   return (
