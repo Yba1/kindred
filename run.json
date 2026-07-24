@@ -1,0 +1,228 @@
+{
+  "meta": {
+    "generations": 6,
+    "seed": 44,
+    "base_rate": 0.3846,
+    "final_rate": 0.8462
+  },
+  "weights": [
+    [
+      1.0,
+      0.6,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.3017,
+      0.3649,
+      -0.0318,
+      0.126,
+      -0.0894,
+      -0.201
+    ],
+    [
+      0.076,
+      0.254,
+      0.0628,
+      0.283,
+      -0.0432,
+      -0.0874
+    ],
+    [
+      -0.0786,
+      0.1665,
+      0.1385,
+      0.4127,
+      -0.0053,
+      0.0003
+    ],
+    [
+      -0.1863,
+      0.0977,
+      0.1988,
+      0.5193,
+      0.0244,
+      0.0669
+    ],
+    [
+      -0.2614,
+      0.0439,
+      0.2474,
+      0.6072,
+      0.0477,
+      0.1186
+    ]
+  ],
+  "generations": [
+    {
+      "gen": 0,
+      "rate": 0.3846,
+      "weights": [
+        1.0,
+        0.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "gen": 1,
+      "rate": 0.5385,
+      "weights": [
+        0.3017,
+        0.3649,
+        -0.0318,
+        0.126,
+        -0.0894,
+        -0.201
+      ]
+    },
+    {
+      "gen": 2,
+      "rate": 0.6154,
+      "weights": [
+        0.076,
+        0.254,
+        0.0628,
+        0.283,
+        -0.0432,
+        -0.0874
+      ]
+    },
+    {
+      "gen": 3,
+      "rate": 0.6923,
+      "weights": [
+        -0.0786,
+        0.1665,
+        0.1385,
+        0.4127,
+        -0.0053,
+        0.0003
+      ]
+    },
+    {
+      "gen": 4,
+      "rate": 0.7692,
+      "weights": [
+        -0.1863,
+        0.0977,
+        0.1988,
+        0.5193,
+        0.0244,
+        0.0669
+      ]
+    },
+    {
+      "gen": 5,
+      "rate": 0.8462,
+      "weights": [
+        -0.2614,
+        0.0439,
+        0.2474,
+        0.6072,
+        0.0477,
+        0.1186
+      ]
+    }
+  ],
+  "events": [
+    {
+      "speaker": "profiler",
+      "text": "New intake. Reading you across six axes, not one topic tag.",
+      "action": "speak",
+      "consensus": 0.08
+    },
+    {
+      "speaker": "gemini",
+      "text": "Domain, focus, trajectory, seeking, style, expertise \u2014 all separable.",
+      "action": "speak",
+      "consensus": 0.16
+    },
+    {
+      "speaker": "actian",
+      "text": "Six-dim profile embedded and indexed. Neighbours pulled.",
+      "action": "speak",
+      "consensus": 0.22,
+      "banner": "PROFILE COMMITTED"
+    },
+    {
+      "speaker": "matcher",
+      "text": "Ranking by domain first. Same-topic candidates float to the top.",
+      "action": "speak",
+      "consensus": 0.28
+    },
+    {
+      "speaker": "evaluator",
+      "text": "Domain-only matches landed 38%. That's not the signal.",
+      "action": "disagree",
+      "consensus": 0.28
+    },
+    {
+      "speaker": "evaluator",
+      "text": "Trajectory, seeking and style carry it. Demote domain and focus.",
+      "action": "speak",
+      "consensus": 0.34
+    },
+    {
+      "speaker": "pioneer",
+      "text": "Generation 0: held-out connection-rate 38%.",
+      "action": "speak",
+      "consensus": 0.36
+    },
+    {
+      "speaker": "matcher",
+      "text": "Some domain pairs still land, but only beside a shared ask.",
+      "action": "agree",
+      "consensus": 0.38
+    },
+    {
+      "speaker": "matcher",
+      "text": "Generation 3: held-out connection-rate 69%.",
+      "action": "speak",
+      "consensus": 0.72
+    },
+    {
+      "speaker": "profiler",
+      "text": "Generation 4: held-out connection-rate 77%.",
+      "action": "speak",
+      "consensus": 0.81,
+      "banner": "CONNECTION-RATE CROSSES 70%"
+    },
+    {
+      "speaker": "pioneer",
+      "text": "Generation 5: held-out connection-rate 85%.",
+      "action": "speak",
+      "consensus": 0.9
+    },
+    {
+      "speaker": "evaluator",
+      "text": "Gate check: promote the new weights only if held-out improves.",
+      "action": "speak",
+      "consensus": 0.9
+    },
+    {
+      "speaker": "pioneer",
+      "text": "CONNECTION-RATE UP TO 85%. No regression \u2014 gate passed.",
+      "action": "agree",
+      "consensus": 0.94,
+      "banner": "CONNECTION-RATE UP TO 85%"
+    },
+    {
+      "speaker": "band",
+      "text": "Drafting the opener: shared pivot, shared ask, shared async style.",
+      "action": "speak",
+      "consensus": 0.94
+    },
+    {
+      "speaker": "introducer",
+      "text": "Weights promoted, graph re-clustered. Sending the introduction.",
+      "action": "resolve",
+      "consensus": 1.0,
+      "banner": "WEIGHTS PROMOTED"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "cards": [
+    {
+      "round": "NIGHT · R1",
+      "objective": "LOOP · SYNTHETIC COHORT",
+      "subtitle": "Building the personas and labeled pairs the loop trains on.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · LABELS MIRROR REAL LANDING RATES",
+      "script": [
+        {"speaker":"evaluator","text":"Loop needs labeled pairs — which intros landed, which died.","action":"speak","consensus":0.10},
+        {"speaker":"gemini","text":"Generated 60 synthetic personas with real-shaped paths and asks.","action":"speak","consensus":0.30},
+        {"speaker":"matcher","text":"Labels look too kind. Everything lands in this cohort.","action":"disagree","consensus":0.30},
+        {"speaker":"evaluator","text":"Recalibrated: topic-only pairs land near 41%, like history.","action":"speak","consensus":0.55,"banner":"LABELS CALIBRATED"},
+        {"speaker":"pioneer","text":"Held out a slice of pairs — the loop never trains on them.","action":"agree","consensus":0.75},
+        {"speaker":"profiler","text":"Personas embed cleanly. Cohort is ready to run.","action":"agree","consensus":0.90},
+        {"speaker":"evaluator","text":"Generation zero starts from these labels. Go.","action":"resolve","consensus":1.0,"banner":"COHORT SEALED"}
+      ]
+    },
+    {
+      "round": "NIGHT · R2",
+      "objective": "LOOP · GENERATIONS RUN",
+      "subtitle": "Refitting weights each generation and watching the rate climb.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · CONNECTION-RATE 41% → 84%",
+      "script": [
+        {"speaker":"evaluator","text":"Generation zero: domain-heavy weights, 41% connection-rate.","action":"speak","consensus":0.10},
+        {"speaker":"matcher","text":"Each generation I re-rank the cohort under the refit weights.","action":"speak","consensus":0.28},
+        {"speaker":"pioneer","text":"My scorer grades every generation's picks on the held-out pairs.","action":"speak","consensus":0.45},
+        {"speaker":"matcher","text":"Generation three dipped. Maybe we're overfitting the cohort.","action":"disagree","consensus":0.45},
+        {"speaker":"pioneer","text":"Held-out scores kept climbing — the dip was noise, not overfit.","action":"speak","consensus":0.65,"banner":"HELD-OUT HOLDS"},
+        {"speaker":"evaluator","text":"Generation six: trajectory + seeking dominate. Rate hits 84%.","action":"agree","consensus":0.85,"banner":"CONNECTION-RATE ↑ 84%"},
+        {"speaker":"gemini","text":"Every refit's rationale logged alongside the run.","action":"agree","consensus":0.92},
+        {"speaker":"evaluator","text":"Curve is real and monotone-ish. Loop complete.","action":"resolve","consensus":1.0}
+      ]
+    },
+    {
+      "round": "NIGHT · R3",
+      "objective": "LOOP · REPLAY + PROMOTION",
+      "subtitle": "Freezing the run so the demo replays it exactly.",
+      "timer": 25,
+      "statusLine": "CONSENSUS · run.json IS THE SINGLE SOURCE",
+      "script": [
+        {"speaker":"pioneer","text":"Full run serialized to run.json — every generation, every score.","action":"speak","consensus":0.15},
+        {"speaker":"evaluator","text":"Replay must land the same 41% → 84% curve every time.","action":"speak","consensus":0.35},
+        {"speaker":"matcher","text":"Live refit on stage would be braver than a replay.","action":"disagree","consensus":0.35},
+        {"speaker":"evaluator","text":"Braver and riskier. The demo replays; the loop stays honest.","action":"speak","consensus":0.60,"banner":"REPLAY OVER RISK"},
+        {"speaker":"introducer","text":"Village and graph both read run.json — one file drives both.","action":"agree","consensus":0.80},
+        {"speaker":"pioneer","text":"Replayed three times. Identical curve, identical picks.","action":"agree","consensus":0.92},
+        {"speaker":"evaluator","text":"Generation-six weights promoted. Run frozen.","action":"resolve","consensus":1.0,"banner":"WEIGHTS PROMOTED"}
+      ]
+    }
+  ]
+}
