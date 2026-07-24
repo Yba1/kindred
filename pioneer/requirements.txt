@@ -1,0 +1,5 @@
+# The scorer deliberately has one dependency.
+# Everything else — HTTP client, server, JSON, tests — is stdlib, so the
+# evolution loop can call score_pair() without pulling in a web framework
+# or an ML runtime.
+numpy>=1.24
