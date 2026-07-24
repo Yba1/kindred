@@ -422,7 +422,9 @@ function boot(){
   };
   if(window.KINDRED_STREAM_URL){ loadCard(DEMO_CARD); connectLive(window.KINDRED_STREAM_URL); return; }
   // scripted mode: load generated cards if present, else the built-in demo
-  fetch('phase_cards.json')
+  // ?cards=phase_cards.loop.json plays a workstream-specific set
+  const cardsFile=new URLSearchParams(location.search).get('cards')||'phase_cards.json';
+  fetch(cardsFile)
     .then(r=>r.ok?r.json():Promise.reject())
     .then(j=>{const cards=Array.isArray(j)?j:(j.cards||[]); cards.length?playCards(cards):playDemo();})
     .catch(playDemo);
