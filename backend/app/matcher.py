@@ -31,6 +31,7 @@ import numpy as np
 
 from .actian import Neighbour
 from .embeddings import cosine, embed
+from .profiler import apply_gemini_reasons
 from .schemas import Profile
 
 BLEND = {"domain": 0.34, "trajectory": 0.36, "seeking": 0.30}
@@ -263,8 +264,10 @@ def _reasons(user: Profile, cand: Profile, comp: dict[str, float]) -> list[str]:
 
 def rank(user: Profile, neighbours: Iterable[Neighbour], limit: int) -> list[Match]:
     matches: list[Match] = []
+    meta_by_id: dict[str, dict] = {}  # kept for the Gemini reason pass below
     for n in neighbours:
         cand = as_profile(n.meta)
+        meta_by_id[n.id] = n.meta
         fit = seeking_fit(user, cand)
         features = edge_features(n.sim_domain, n.sim_trajectory, fit, stage_affinity(user, cand))
         comp = {
@@ -288,4 +291,9 @@ def rank(user: Profile, neighbours: Iterable[Neighbour], limit: int) -> list[Mat
             )
         )
     matches.sort(key=lambda m: m.score, reverse=True)
-    return matches[:limit]
+    top = matches[:limit]
+    # Upgrade the template reasons to Gemini's when a key is configured. One
+    # call for the whole set, and a no-op without a key — so the panel still
+    # reads sensibly on the fallback path.
+    apply_gemini_reasons(user, top, meta_by_id)
+    return top

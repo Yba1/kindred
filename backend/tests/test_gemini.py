@@ -522,11 +522,15 @@ def test_graph_contract_holds_on_the_live_path_without_fanning_out(gemini):
 
     g = client.post("/graph", json={"context": CONTEXT, "name": "You", "top_k": 8}).json()
 
-    assert set(g) == {"center", "nodes", "edges", "reasons"}
+    # `meta` is additive, carrying featureNames/weights for the frontend's
+    # re-cluster. The four contract keys must still all be present.
+    assert {"center", "nodes", "edges", "reasons"} <= set(g)
     assert len(g["nodes"]) == 9
     for node in g["nodes"][1:]:
         assert 1 <= len(g["reasons"][node["id"]]) <= 3
-    assert len(gemini.generate_calls) == 1, "one profile call per request"
+    # Two calls per request: one profile, one batched pass for every reason in
+    # the set. The point of this test is that neither scales with node count.
+    assert len(gemini.generate_calls) == 2, "one profile call + one batched reasons call"
     assert len(gemini.embed_singles) <= 8, (
         f"one /graph must not fan out per node "
         f"(got {len(gemini.embed_singles)} single embeds)"
