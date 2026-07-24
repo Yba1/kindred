@@ -1,2 +1,13 @@
-fastapi
-uvicorn[standard]
+# Kindred backend — Workstream A
+# Core service. Everything below google-generativeai is required; the Gemini
+# and Actian SDKs are optional — the app degrades to deterministic fallbacks
+# when their keys/hosts are absent, so it always boots for the demo.
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+numpy>=1.26
+python-dotenv>=1.0
+
+# --- optional sponsors (imports are guarded; safe to omit) ---
+# google-generativeai>=0.7   # Gemini: profiling + reasoning + embeddings
+# actian-vector              # Actian vector store (falls back to numpy cosine)
