@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kindred · Village</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{
+  --frame:#15152e;        /* outer dark navy frame */
+  --bar:#191933;          /* top/bottom bars */
+  --field:#7ca35a;        /* grass */
+  --field2:#759b54;       /* grass stripe */
+  --path:#8b7fb0;         /* purple paths */
+  --circle:#8b7fb0;       /* negotiation ring */
+  --ink:#ffffff;
+  --plaque:#25254a;       /* name plaques / pills */
+  --plaque-b:#3a3a66;
+  --lamp:#f4c542;         /* lit windows / lamps */
+  --accent:#b06ab0;       /* event banner purple */
+  --agree:#5aa860;
+  --disagree:#c05a5a;
+  --timer:#e08a3c;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0c0c1c;color:var(--ink);
+  font-family:"Press Start 2P",monospace;-webkit-font-smoothing:none;image-rendering:pixelated}
+.stage-wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:18px}
+.game{
+  width:min(1180px,96vw);aspect-ratio:1180/720;position:relative;
+  background:var(--frame);border-radius:14px;padding:8px;
+  box-shadow:0 0 0 3px #0c0c1c, 0 24px 60px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+
+/* ---- top bar ---- */
+.top{display:flex;align-items:center;gap:16px;padding:12px 14px 14px;flex:0 0 auto}
+.badge{background:var(--lamp);color:#3a2c00;font-size:9px;padding:7px 9px;border-radius:5px;
+  letter-spacing:1px;white-space:nowrap;box-shadow:0 2px 0 #b8942f}
+.head-txt{flex:1;min-width:0}
+.head-txt h1{margin:0;font-size:13px;letter-spacing:1px;line-height:1.35;
+  text-transform:uppercase;text-shadow:2px 2px 0 #0c0c1c}
+.head-txt p{margin:5px 0 0;font-size:8px;letter-spacing:.5px;color:#c9c6e6;line-height:1.5}
+.timer{text-align:right;flex:0 0 auto}
+.timer .t{color:var(--timer);font-size:16px;letter-spacing:1px;text-shadow:2px 2px 0 #0c0c1c}
+.timer .l{font-size:7px;color:#9a97bd;margin-top:4px}
+.replay{background:#3a2f66;color:#fff;border:none;font-family:inherit;font-size:8px;
+  padding:9px 11px;border-radius:5px;letter-spacing:1px;cursor:pointer;box-shadow:0 3px 0 #241d45}
+.replay:active{transform:translateY(2px);box-shadow:0 1px 0 #241d45}
+
+/* ---- field ---- */
+.field{position:relative;flex:1 1 auto;margin:0 6px;border-radius:8px;overflow:hidden;
+  background:
+    repeating-linear-gradient(90deg,var(--field) 0 26px,var(--field2) 26px 52px);
+  box-shadow:inset 0 0 0 2px #0c0c1c}
+.field svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.node{position:absolute;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+.name{background:var(--plaque);border:2px solid var(--plaque-b);font-size:7px;
+  padding:3px 5px;border-radius:4px;letter-spacing:1px;display:inline-block;
+  text-shadow:1px 1px 0 #0c0c1c;white-space:nowrap}
+.house .name{margin-top:2px}
+.status{margin-top:3px;font-size:6px;padding:2px 5px;border-radius:4px;display:inline-block;letter-spacing:1px}
+.status.agree{background:#1f3a22;color:var(--agree);border:1px solid #2f5a34}
+.status.disagree{background:#3a1f1f;color:var(--disagree);border:1px solid #5a2f2f}
+.status.think{background:#2a2a45;color:#b9b6dd;border:1px solid #3a3a5f}
+
+/* villager */
+.villager{width:26px;height:34px;margin:0 auto;position:relative;transition:filter .2s}
+.villager.speaking{filter:drop-shadow(0 0 6px var(--lamp))}
+
+/* speech bubble */
+.bubble{position:absolute;left:50%;bottom:100%;transform:translate(-50%,-6px);
+  background:#20203f;border:2px solid #3a3a66;color:#fff;font-size:6.5px;line-height:1.5;
+  letter-spacing:.5px;padding:6px 8px;border-radius:6px;max-width:180px;width:max-content;
+  text-align:left;box-shadow:0 4px 0 #12122a;opacity:0;transition:opacity .15s}
+.bubble.show{opacity:1}
+.bubble:after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:#3a3a66}
+
+/* central event banner */
+.banner{position:absolute;left:50%;top:16%;transform:translate(-50%,-50%) scale(.9);
+  background:var(--accent);color:#fff;font-size:9px;letter-spacing:1px;padding:9px 14px;
+  border-radius:6px;text-transform:uppercase;box-shadow:0 4px 0 #6d3f6d;opacity:0;
+  transition:opacity .2s,transform .2s;white-space:nowrap;text-shadow:1px 1px 0 #4a294a}
+.banner.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+/* ---- bottom bar ---- */
+.bottom{display:flex;align-items:center;gap:12px;padding:12px 16px;flex:0 0 auto;font-size:8px}
+.chips{display:flex;gap:7px}
+.chip{padding:6px 9px;border-radius:5px;letter-spacing:1px;color:#0c0c1c;font-size:8px}
+.status-line{color:#c9c6e6;letter-spacing:1px;font-size:8px;flex:0 0 auto}
+.spacer{flex:1}
+.meter-label{font-size:8px;letter-spacing:1px;color:#9a97bd}
+.meter{display:flex;gap:3px}
+.seg{width:16px;height:12px;background:#2a2a45;border:1px solid #3a3a5f;border-radius:2px}
+.seg.on{background:var(--disagree);border-color:#7a3a3a}
+.seg.on.pos{background:var(--agree);border-color:#3a7a44}
+.score{color:#fff;font-size:12px;letter-spacing:1px;min-width:52px;text-align:right}
+
+@media (max-width:720px){
+  .head-txt h1{font-size:10px}.head-txt p{font-size:7px}
+  .status-line{display:none}.badge{font-size:7px}
+}
+</style>
+</head>
+<body>
+<div class="stage-wrap">
+  <div class="game" id="game">
+    <div class="top">
+      <div class="badge" id="round">DAY · R1</div>
+      <div class="head-txt">
+        <h1 id="objective">MATCH · EX-FINANCE CLUSTER</h1>
+        <p id="subtitle">Deciding who's actually closest to you.</p>
+      </div>
+      <div class="timer">
+        <div class="t" id="timer">0:30</div>
+        <div class="l">round ends</div>
+      </div>
+      <button class="replay" id="replayBtn">REPLAY</button>
+    </div>
+
+    <div class="field" id="field">
+      <svg class="scene" id="scene" viewBox="0 0 1180 520" preserveAspectRatio="none"></svg>
+      <div class="banner" id="banner"></div>
+      <!-- nodes injected here -->
+    </div>
+
+    <div class="bottom">
+      <div class="chips" id="chips"></div>
+      <div class="status-line" id="statusLine">CONSENSUS · SHARED TRAJECTORY &gt; SHARED TOPIC</div>
+      <div class="spacer"></div>
+      <div class="meter-label" id="meterLabel">DISAGREE</div>
+      <div class="meter" id="meter"></div>
+      <div class="score" id="score">0.00</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   KINDRED · VILLAGE  — data-driven agent-conversation visualizer
+   Drop-in themed view of your multi-agent system deliberating.
+   Feed it phase cards (see phase_cards.example.json) or stream live events.
+   -------------------------------------------------------------------------
+   LIVE MODE: if window.KINDRED_STREAM_URL is set to an SSE endpoint that
+   emits `data: {json event}` lines, the village plays them as they arrive.
+   Otherwise it plays the demo card below.
+   Event shape:
+     { speaker:"matcher", text:"...", action:"speak|agree|disagree|resolve",
+       consensus: 0.0..1.0, banner:"OPTIONAL BANNER" }
+   ========================================================================= */
+
+// ---- agent roster (your Kindred agents, as villagers) --------------------
+const AGENTS = {
+  profiler:   {label:"PROFILER",   color:"#4a6ab0", house:"PROFILER",   ring:0},
+  matcher:    {label:"MATCHER",    color:"#c0913c", house:"MATCHER",    ring:1},
+  evaluator:  {label:"EVALUATOR",  color:"#b05a5a", house:"EVALUATOR",  ring:2},
+  introducer: {label:"INTRODUCER", color:"#5aa860", house:"INTRODUCER", ring:3},
+  actian:     {label:"ACTIAN",     color:"#8b6bb0", house:"ACTIAN·DB",  ring:4},
+  pioneer:    {label:"PIONEER",    color:"#3c9c9c", house:"PIONEER",    ring:5},
+  band:       {label:"BAND",       color:"#c06a9c", house:"BAND",       ring:6},
+  gemini:     {label:"GEMINI",     color:"#7c6ad0", house:"GEMINI",     ring:7},
+};
+const CENTER_IDS = ["matcher","evaluator","profiler"]; // who stands in the ring
+
+// ---- demo phase card (used when no live stream) --------------------------
+const DEMO_CARD = {
+  round:"DAY · R1",
+  objective:"MATCH · EX-FINANCE CLUSTER",
+  subtitle:"Deciding who's actually closest to you.",
+  timer:30,
+  statusLine:"CONSENSUS · SHARED TRAJECTORY > SHARED TOPIC",
+  script:[
+    {speaker:"profiler", text:"Built your profile: ex-finance, agent infra, seeking cofounder.", action:"speak", consensus:0.10},
+    {speaker:"actian",   text:"Pulled 30 nearest neighbours from the vector store.", action:"speak", consensus:0.10},
+    {speaker:"matcher",  text:"Top picks all share your DOMAIN. Ranking them now.", action:"speak", consensus:0.25},
+    {speaker:"evaluator",text:"Careful — same-domain matches only landed 41% of the time.", action:"disagree", consensus:0.15},
+    {speaker:"matcher",  text:"You're saying topic isn't the signal?", action:"speak", consensus:0.20},
+    {speaker:"evaluator",text:"Right. Trajectory + what they're seeking predicts landing.", action:"speak", consensus:0.45, banner:"EVALUATOR REWEIGHTS"},
+    {speaker:"matcher",  text:"Re-ranking. Dropping two topic matches, adding two trajectory matches.", action:"speak", consensus:0.65},
+    {speaker:"profiler", text:"These new ones fit better — same path, same ask.", action:"agree", consensus:0.80},
+    {speaker:"matcher",  text:"Agreed. Shared trajectory beats shared topic.", action:"agree", consensus:0.92, banner:"MATCHER STOPPED ARGUING"},
+    {speaker:"introducer",text:"Drafting an opener for your top match via BAND.", action:"resolve", consensus:1.0, banner:"CONSENSUS REACHED"},
+  ]
+};
+
+/* ---------- pixel villager + house SVG builders ---------- */
+function villagerSVG(color){
+  // 26x34 little pixel person: hat, head, body
+  return `<svg class="villager" viewBox="0 0 26 34" shape-rendering="crispEdges">
+    <rect x="7" y="2" width="12" height="5" fill="${shade(color,-30)}"/>   <!-- hat -->
+    <rect x="6" y="6" width="14" height="3" fill="${shade(color,-45)}"/>
+    <rect x="8" y="9" width="10" height="8" fill="#e8c39e"/>               <!-- head -->
+    <rect x="10" y="12" width="2" height="2" fill="#2a2a2a"/>
+    <rect x="14" y="12" width="2" height="2" fill="#2a2a2a"/>
+    <rect x="6" y="17" width="14" height="12" fill="${color}"/>            <!-- body -->
+    <rect x="6" y="17" width="14" height="3" fill="${shade(color,20)}"/>
+    <rect x="8" y="29" width="4" height="5" fill="${shade(color,-40)}"/>   <!-- legs -->
+    <rect x="14" y="29" width="4" height="5" fill="${shade(color,-40)}"/>
+  </svg>`;
+}
+function houseSVG(color,w,h){
+  const roof=shade(color,-35), body=color, dark=shade(color,-20);
+  return `<g shape-rendering="crispEdges">
+    <rect x="0" y="${h*0.30}" width="${w}" height="${h*0.70}" fill="${body}"/>
+    <rect x="0" y="${h*0.30}" width="${w}" height="4" fill="${shade(color,15)}"/>
+    <polygon points="-6,${h*0.32} ${w/2},0 ${w+6},${h*0.32}" fill="${roof}"/>
+    <rect x="${w*0.40}" y="${h*0.58}" width="${w*0.20}" height="${h*0.42}" fill="${shade(color,-45)}"/>
+    <rect x="${w*0.12}" y="${h*0.44}" width="${w*0.16}" height="${w*0.16}" fill="var(--lamp)"/>
+    <rect x="${w*0.72}" y="${h*0.44}" width="${w*0.16}" height="${w*0.16}" fill="var(--lamp)"/>
+  </g>`;
+}
+// hex shade helper
+function shade(hex,amt){
+  const n=parseInt(hex.slice(1),16);
+  let r=(n>>16)+amt,g=((n>>8)&255)+amt,b=(n&255)+amt;
+  r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));
+  return "#"+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+}
+
+/* ---------- scene layout ---------- */
+const scene=document.getElementById('scene');
+const field=document.getElementById('field');
+const nodeEls={};   // id -> {el, bubble, statusEl}
+const ORDER=Object.keys(AGENTS);
+
+// ring positions for houses around the perimeter
+function housePositions(n){
+  const pos=[]; const cx=590, cy=250;
+  for(let i=0;i<n;i++){
+    const a=(-Math.PI/2)+(i/n)*Math.PI*2;
+    pos.push({x:cx+Math.cos(a)*470, y:cy+Math.sin(a)*205});
+  }
+  return pos;
+}
+
+function buildScene(){
+  // static decorations + paths + ring drawn in SVG
+  const cx=590,cy=250;
+  let s='';
+  // pond
+  s+=`<ellipse cx="1060" cy="70" rx="70" ry="34" fill="#5b7fc9" opacity=".85"/>`;
+  s+=`<ellipse cx="1060" cy="70" rx="70" ry="34" fill="none" stroke="#3a5aa0" stroke-width="3"/>`;
+  // scattered trees + rocks (deterministic)
+  const deco=[[80,60],[180,90],[250,60],[120,430],[70,300],[1120,300],[1060,420],[980,160],[1140,150],[900,470],[300,470],[520,470]];
+  deco.forEach(([x,y],i)=>{ s+= (i%3===0)
+    ? `<g shape-rendering="crispEdges"><rect x="${x-4}" y="${y}" width="8" height="12" fill="#6b4a2a"/><polygon points="${x-16},${y} ${x},${y-26} ${x+16},${y}" fill="#3f6b3a"/><polygon points="${x-13},${y-10} ${x},${y-30} ${x+13},${y-10}" fill="#4a7a44"/></g>`
+    : `<ellipse cx="${x}" cy="${y+6}" rx="10" ry="6" fill="#8a8a8a"/>`;
+  });
+  // dashed empty LOTs
+  s+=`<rect x="960" y="380" width="120" height="90" fill="none" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="8 8" opacity=".5"/>`;
+  s+=`<rect x="520" y="410" width="110" height="80" fill="none" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="8 8" opacity=".5"/>`;
+  // paths from centre to each house + lamp posts
+  const pos=housePositions(ORDER.length);
+  pos.forEach(p=>{
+    s+=`<line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}" stroke="var(--path)" stroke-width="16" opacity=".55" stroke-linecap="round"/>`;
+    const lx=cx+(p.x-cx)*0.42, ly=cy+(p.y-cy)*0.42;
+    s+=`<rect x="${lx-5}" y="${ly-5}" width="10" height="10" fill="var(--lamp)"/>`;
+  });
+  // negotiation ring (dithered)
+  s+=`<ellipse cx="${cx}" cy="${cy}" rx="200" ry="120" fill="var(--circle)" opacity=".38"/>`;
+  s+=`<ellipse cx="${cx}" cy="${cy}" rx="200" ry="120" fill="none" stroke="var(--circle)" stroke-width="4" opacity=".7"/>`;
+  // little well at centre
+  s+=`<g shape-rendering="crispEdges"><rect x="${cx-22}" y="${cy-40}" width="44" height="30" fill="#7a5a3a"/><rect x="${cx-26}" y="${cy-14}" width="52" height="18" fill="#5a4a6a"/><rect x="${cx-4}" y="${cy-58}" width="8" height="20" fill="#6b4a2a"/><polygon points="${cx-30},${cy-40} ${cx},${cy-62} ${cx+30},${cy-40}" fill="#4a3a5a"/></g>`;
+  // houses
+  pos.forEach((p,i)=>{
+    const id=ORDER[i], a=AGENTS[id];
+    s+=`<g transform="translate(${p.x-42},${p.y-58})">${houseSVG(a.color,84,72)}</g>`;
+  });
+  scene.innerHTML=s;
+
+  // house name plaques (HTML overlay)
+  pos.forEach((p,i)=>{
+    const id=ORDER[i], a=AGENTS[id];
+    const el=document.createElement('div');
+    el.className='node house';
+    el.style.left=(p.x/1180*100)+'%';
+    el.style.top=((p.y+34)/520*100)+'%';
+    el.innerHTML=`<span class="name">${a.house}</span>`;
+    field.appendChild(el);
+  });
+
+  // villagers are placed per-card by placeVillagers()
+  placeVillagers(CENTER_IDS);
+}
+
+// place the deliberating agents for the current card inside the ring
+function placeVillagers(ids){
+  field.querySelectorAll('.node.actor').forEach(el=>el.remove());
+  Object.keys(nodeEls).forEach(k=>delete nodeEls[k]);
+  const cx2=590, n=ids.length;
+  const spread = n>1 ? Math.min(140, 360/(n-1)) : 0;
+  ids.forEach((id,i)=>{
+    const a=AGENTS[id]; if(!a) return;
+    const x=cx2+(i-(n-1)/2)*spread;
+    const y=250 + (i%2? 18:-8);
+    const el=document.createElement('div');
+    el.className='node actor';
+    el.style.left=(x/1180*100)+'%';
+    el.style.top=(y/520*100)+'%';
+    el.innerHTML=`
+      <div class="bubble" id="bub-${id}"></div>
+      ${villagerSVG(a.color)}
+      <div class="name">${a.label}</div>
+      <div class="status think" id="st-${id}">THINKING</div>`;
+    field.appendChild(el);
+    nodeEls[id]={el, bubble:el.querySelector('.bubble'), statusEl:el.querySelector('.status')};
+  });
+}
+
+/* ---------- bottom chips + meter ---------- */
+function buildChips(ids=CENTER_IDS){
+  const chips=document.getElementById('chips'); chips.innerHTML='';
+  ids.forEach(id=>{
+    if(!AGENTS[id]) return;
+    const a=AGENTS[id];
+    const c=document.createElement('span');
+    c.className='chip'; c.style.background=a.color; c.textContent=a.label;
+    chips.appendChild(c);
+  });
+  const meter=document.getElementById('meter'); meter.innerHTML='';
+  for(let i=0;i<10;i++){const s=document.createElement('div');s.className='seg';meter.appendChild(s);}
+}
+function setConsensus(v){                       // 0..1
+  const segs=document.querySelectorAll('#meter .seg');
+  const on=Math.round(v*segs.length);
+  segs.forEach((s,i)=>{s.className='seg'+(i<on?' on pos':'')});
+  document.getElementById('meterLabel').textContent = v>=0.6?'AGREE':'DISAGREE';
+  document.getElementById('score').textContent = v.toFixed(2);
+}
+
+/* ---------- playback engine ---------- */
+let timerHandle=null, playHandle=null;
+function showBubble(id,text){
+  Object.values(nodeEls).forEach(n=>{n.bubble.classList.remove('show');
+    n.el.querySelector('.villager')?.classList.remove('speaking');});
+  const n=nodeEls[id]; if(!n) return;
+  n.bubble.textContent=text; n.bubble.classList.add('show');
+  n.el.querySelector('.villager')?.classList.add('speaking');
+}
+function setStatus(id,action){
+  const n=nodeEls[id]; if(!n) return;
+  const map={agree:['agree','AGREE'],disagree:['disagree','DISAGREE'],
+             resolve:['agree','SIGNED'],speak:['think','SPEAKING']};
+  const [cls,txt]=map[action]||['think','THINKING'];
+  n.statusEl.className='status '+cls; n.statusEl.textContent=txt;
+}
+function flashBanner(text){
+  const b=document.getElementById('banner');
+  if(!text){b.classList.remove('show');return;}
+  b.textContent=text; b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'),1600);
+}
+function applyEvent(e){
+  if(e.banner) flashBanner(e.banner);
+  if(e.speaker){ showBubble(e.speaker,e.text||''); setStatus(e.speaker,e.action||'speak'); }
+  if(typeof e.consensus==='number') setConsensus(e.consensus);
+}
+
+function loadCard(card){
+  document.getElementById('round').textContent=card.round||'DAY · R1';
+  document.getElementById('objective').textContent=card.objective||'';
+  document.getElementById('subtitle').textContent=card.subtitle||'';
+  document.getElementById('statusLine').textContent=card.statusLine||'';
+  // whoever speaks in this card stands in the ring (order of first appearance)
+  const speakers=[...new Set((card.script||[]).map(l=>l.speaker).filter(id=>AGENTS[id]))];
+  const ids=speakers.length?speakers:CENTER_IDS;
+  placeVillagers(ids); buildChips(ids);
+  startTimer(card.timer||30);
+}
+function startTimer(sec){
+  clearInterval(timerHandle); let t=sec;
+  const el=document.getElementById('timer');
+  const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+  el.textContent=fmt(t);
+  timerHandle=setInterval(()=>{t=Math.max(0,t-1);el.textContent=fmt(t);if(t===0)clearInterval(timerHandle);},1000);
+}
+function playScript(script,stepMs=1900,onDone){
+  clearInterval(playHandle); let i=0;
+  setConsensus(0);
+  playHandle=setInterval(()=>{
+    if(i>=script.length){clearInterval(playHandle); if(onDone) onDone(); return;}
+    applyEvent(script[i]); i++;
+  },stepMs);
+}
+
+/* ---------- card sequencing (phase_cards.json) ---------- */
+let CARDS=null;
+function playCards(cards,start=0){
+  CARDS=cards;
+  const card=cards[start%cards.length];
+  loadCard(card);
+  playScript(card.script,1900,()=>{
+    setTimeout(()=>playCards(cards,start+1),2200); // pause on resolve, then next round
+  });
+}
+
+/* ---------- live SSE mode (optional) ---------- */
+function connectLive(url){
+  try{
+    const es=new EventSource(url);
+    es.onmessage=ev=>{ try{applyEvent(JSON.parse(ev.data));}catch(_){}};
+    es.onerror=()=>{es.close(); playDemo();}; // fall back if stream drops
+    return true;
+  }catch(_){return false;}
+}
+// public hook so a backend/websocket can push events directly:
+window.pushAgentEvent = applyEvent;
+// public hook to load a phase card at runtime:
+window.loadPhaseCard = card=>{loadCard(card);playScript(card.script);};
+
+/* ---------- boot ---------- */
+function playDemo(){ playCards([DEMO_CARD]); }
+function boot(){
+  buildScene(); buildChips();
+  document.getElementById('replayBtn').onclick=()=>{
+    if(window.KINDRED_STREAM_URL){location.reload();}
+    else if(CARDS){playCards(CARDS,0);}
+    else playDemo();
+  };
+  if(window.KINDRED_STREAM_URL){ loadCard(DEMO_CARD); connectLive(window.KINDRED_STREAM_URL); return; }
+  // scripted mode: load generated cards if present, else the built-in demo
+  fetch('phase_cards.json')
+    .then(r=>r.ok?r.json():Promise.reject())
+    .then(j=>{const cards=Array.isArray(j)?j:(j.cards||[]); cards.length?playCards(cards):playDemo();})
+    .catch(playDemo);
+}
+boot();
+</script>
+</body>
+</html>

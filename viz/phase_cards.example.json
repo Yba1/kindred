@@ -1,0 +1,54 @@
+{
+  "_schema": {
+    "round": "string  — header badge, e.g. 'DAY · R2'",
+    "objective": "string — uppercase objective line (top-left title)",
+    "subtitle": "string — one plain-language line under the objective",
+    "timer": "int — seconds for the round countdown",
+    "statusLine": "string — the consensus rule shown in the bottom bar",
+    "script": [
+      {
+        "speaker": "one of: profiler|matcher|evaluator|introducer|actian|pioneer|band|gemini",
+        "text": "string — what the villager says (keep under ~90 chars, it's a bubble)",
+        "action": "speak|agree|disagree|resolve",
+        "consensus": "float 0.0..1.0 — sets the bottom meter + score",
+        "banner": "OPTIONAL string — flashes the central purple banner"
+      }
+    ]
+  },
+
+  "cards": [
+    {
+      "round": "DAY · R1",
+      "objective": "MATCH · EX-FINANCE CLUSTER",
+      "subtitle": "Deciding who's actually closest to you.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · SHARED TRAJECTORY > SHARED TOPIC",
+      "script": [
+        {"speaker":"profiler","text":"Built your profile: ex-finance, agent infra, seeking cofounder.","action":"speak","consensus":0.10},
+        {"speaker":"actian","text":"Pulled 30 nearest neighbours from the vector store.","action":"speak","consensus":0.10},
+        {"speaker":"matcher","text":"Top picks all share your DOMAIN. Ranking them now.","action":"speak","consensus":0.25},
+        {"speaker":"evaluator","text":"Careful — same-domain matches only landed 41% of the time.","action":"disagree","consensus":0.15},
+        {"speaker":"evaluator","text":"Trajectory + what they're seeking predicts landing.","action":"speak","consensus":0.45,"banner":"EVALUATOR REWEIGHTS"},
+        {"speaker":"matcher","text":"Re-ranking. Two topic matches out, two trajectory matches in.","action":"speak","consensus":0.68},
+        {"speaker":"profiler","text":"Better fit — same path, same ask.","action":"agree","consensus":0.82},
+        {"speaker":"matcher","text":"Shared trajectory beats shared topic. Agreed.","action":"agree","consensus":0.92,"banner":"MATCHER STOPPED ARGUING"},
+        {"speaker":"introducer","text":"Drafting an opener for your top match via BAND.","action":"resolve","consensus":1.0,"banner":"CONSENSUS REACHED"}
+      ]
+    },
+
+    {
+      "round": "DAY · R2",
+      "objective": "LEARN · GENERATION 5",
+      "subtitle": "Folding in which connections actually landed.",
+      "timer": 25,
+      "statusLine": "CONSENSUS · WEIGHTS SHIFT OFF DOMAIN",
+      "script": [
+        {"speaker":"pioneer","text":"Scored 60 held-out connections with the fine-tuned model.","action":"speak","consensus":0.20},
+        {"speaker":"evaluator","text":"Refitting weights on the new outcomes.","action":"speak","consensus":0.35},
+        {"speaker":"evaluator","text":"Connection-rate up: 41% → 84% since generation 0.","action":"agree","consensus":0.75,"banner":"CONNECTION-RATE ↑ 84%"},
+        {"speaker":"matcher","text":"Graph re-clustering — topic clumps dissolving.","action":"agree","consensus":0.90},
+        {"speaker":"introducer","text":"Promoting the new weights. Rolling the graph.","action":"resolve","consensus":1.0,"banner":"WEIGHTS PROMOTED"}
+      ]
+    }
+  ]
+}
