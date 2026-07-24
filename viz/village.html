@@ -402,8 +402,19 @@ function flashBanner(text){
   b.textContent = text; b.classList.add('show');
   setTimeout(()=> b.classList.remove('show'), 1600);
 }
+// Bring a newly-speaking agent into the plaza on the fly. Scripted cards
+// already set the whole round's cast up front via loadCard(); this is what
+// makes LIVE mode (real backend events, no card boundaries) adaptive too —
+// whoever is actually communicating walks in, oldest speaker steps out once
+// the plaza's 6 slots are full, instead of the cast being fixed at boot.
+function ensureActive(id){
+  if(!AGENTS[id] || activeIds.includes(id)) return;
+  let next = activeIds.concat(id);
+  if(next.length > PLAZA_SLOTS.length) next = next.slice(next.length - PLAZA_SLOTS.length);
+  placeActive(next);
+}
 function applyEvent(e){
-  if(e.speaker){ showBubble(e.speaker, e.text||''); setStatus(e.speaker, e.action||'speak'); }
+  if(e.speaker){ ensureActive(e.speaker); showBubble(e.speaker, e.text||''); setStatus(e.speaker, e.action||'speak'); }
   if(typeof e.consensus==='number') setConsensus(e.consensus);
   if(e.banner) flashBanner(e.banner);
 }
