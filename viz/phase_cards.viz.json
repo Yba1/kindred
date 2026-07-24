@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "round": "DAY · R1",
+      "objective": "VILLAGE · LIVE SSE FEED",
+      "subtitle": "Streaming real agent events into the pixel village.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · ONE EVENT SHAPE, CARDS AS FALLBACK",
+      "script": [
+        {"speaker":"introducer","text":"SSE channel open — backend agent events flow into the village.","action":"speak","consensus":0.10},
+        {"speaker":"gemini","text":"Mapping each event to a villager line: speaker, text, consensus.","action":"speak","consensus":0.30},
+        {"speaker":"band","text":"Raw events arrive out of order. Bubbles fire over each other.","action":"disagree","consensus":0.30},
+        {"speaker":"introducer","text":"Buffering per round — lines queue and play in sequence.","action":"speak","consensus":0.55,"banner":"EVENTS SEQUENCED"},
+        {"speaker":"evaluator","text":"Consensus meter only climbs, live or scripted. Enforced.","action":"agree","consensus":0.75},
+        {"speaker":"band","text":"Dropped stream falls back to phase cards without a flicker.","action":"agree","consensus":0.90},
+        {"speaker":"introducer","text":"Village breathes on real events. Wired.","action":"resolve","consensus":1.0,"banner":"SSE LIVE"}
+      ]
+    },
+    {
+      "round": "DAY · R2",
+      "objective": "INTEGRATE · THREE STREAMS",
+      "subtitle": "Gluing backend, graph, and loop into one story.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · ONE CLOCK DRIVES EVERY PANE",
+      "script": [
+        {"speaker":"introducer","text":"Three feeds: /profile events, graph payloads, loop generations.","action":"speak","consensus":0.10},
+        {"speaker":"matcher","text":"Graph re-clusters the moment loop weights arrive. Wired direct.","action":"speak","consensus":0.28},
+        {"speaker":"band","text":"Village lags the graph — the reweight lands before the argument.","action":"disagree","consensus":0.28},
+        {"speaker":"introducer","text":"One shared round clock now gates village, graph, and meter.","action":"speak","consensus":0.55,"banner":"STREAMS SYNCED"},
+        {"speaker":"gemini","text":"Rationale text matches across panes — same string everywhere.","action":"agree","consensus":0.72},
+        {"speaker":"evaluator","text":"End-to-end run: profile in, graph moves, 41% → 84% on cue.","action":"agree","consensus":0.90},
+        {"speaker":"introducer","text":"The three panes tell one story. Integrated.","action":"resolve","consensus":1.0,"banner":"ONE STORY"}
+      ]
+    },
+    {
+      "round": "NIGHT · R3",
+      "objective": "DEMO · FREEZE + REPLAY",
+      "subtitle": "Locking a deterministic run for the stage.",
+      "timer": 25,
+      "statusLine": "CONSENSUS · REPLAY IS FRAME-EXACT, LIVE IS BACKUP",
+      "script": [
+        {"speaker":"band","text":"Recorded the best full run — every event, timestamped.","action":"speak","consensus":0.15},
+        {"speaker":"introducer","text":"Replay pipes it through the same SSE path. No code forks.","action":"speak","consensus":0.35},
+        {"speaker":"gemini","text":"Live mode on stage would show it's real, not canned.","action":"disagree","consensus":0.35},
+        {"speaker":"introducer","text":"Live stays one keypress away. Replay is the default open.","action":"speak","consensus":0.60,"banner":"DEMO MODE SET"},
+        {"speaker":"evaluator","text":"Three replays, identical frames, meter ends at 84% each time.","action":"agree","consensus":0.80},
+        {"speaker":"band","text":"Openers render at the finale — BAND intro caps the run.","action":"agree","consensus":0.92},
+        {"speaker":"introducer","text":"Demo frozen. Kindred is ready for the stage.","action":"resolve","consensus":1.0,"banner":"DEMO FROZEN"}
+      ]
+    }
+  ]
+}
