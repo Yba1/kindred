@@ -8,12 +8,44 @@
       "timer": 30,
       "statusLine": "CONSENSUS · DIMENSIONS STAY SEPARABLE",
       "script": [
-        {"speaker":"profiler","text":"New intake. Reading who you are across six separate dimensions.","action":"speak","consensus":0.10},
-        {"speaker":"gemini","text":"Extracting domain, focus, trajectory, seeking, style, expertise.","action":"speak","consensus":0.25},
-        {"speaker":"evaluator","text":"Don't collapse it to topic tags — keep the six axes separable.","action":"disagree","consensus":0.25},
-        {"speaker":"gemini","text":"Encoded each on its own axis, so weights can move independently.","action":"speak","consensus":0.50,"banner":"SIX DIMENSIONS ENCODED"},
-        {"speaker":"profiler","text":"You: ex-finance, agent infra, solo→team, async builder, mid-level.","action":"agree","consensus":0.78},
-        {"speaker":"actian","text":"Six-dim profile embedded and indexed. You're searchable.","action":"resolve","consensus":1.0,"banner":"PROFILE COMMITTED"}
+        {
+          "speaker": "profiler",
+          "text": "New intake. Reading who you are across six separate dimensions.",
+          "action": "speak",
+          "consensus": 0.1
+        },
+        {
+          "speaker": "gemini",
+          "text": "Extracting domain, focus, trajectory, seeking, style, expertise.",
+          "action": "speak",
+          "consensus": 0.25
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Don't collapse it to topic tags — keep the six axes separable.",
+          "action": "disagree",
+          "consensus": 0.25
+        },
+        {
+          "speaker": "gemini",
+          "text": "Encoded each on its own axis, so weights can move independently.",
+          "action": "speak",
+          "consensus": 0.5,
+          "banner": "SIX DIMENSIONS ENCODED"
+        },
+        {
+          "speaker": "profiler",
+          "text": "You: ex-finance, agent infra, solo→team, async builder, mid-level.",
+          "action": "agree",
+          "consensus": 0.78
+        },
+        {
+          "speaker": "actian",
+          "text": "Six-dim profile embedded and indexed. You're searchable.",
+          "action": "resolve",
+          "consensus": 1.0,
+          "banner": "PROFILE COMMITTED"
+        }
       ]
     },
     {
@@ -23,12 +55,49 @@
       "timer": 25,
       "statusLine": "CONSENSUS · POOL SPANS MORE THAN DOMAIN",
       "script": [
-        {"speaker":"actian","text":"Pulled 30 nearest neighbours across all six axes.","action":"speak","consensus":0.15},
-        {"speaker":"matcher","text":"First rank by domain. Finance folk float to the top.","action":"speak","consensus":0.30},
-        {"speaker":"evaluator","text":"Domain-heavy pool. That clump only landed 41% before.","action":"disagree","consensus":0.30},
-        {"speaker":"actian","text":"Widening — neighbours by trajectory and seeking too.","action":"speak","consensus":0.55,"banner":"POOL WIDENED"},
-        {"speaker":"gemini","text":"Mixed domains now, shared arcs and asks. Healthier spread.","action":"agree","consensus":0.78},
-        {"speaker":"matcher","text":"Candidate set locked. Fifteen nodes to rank.","action":"resolve","consensus":1.0}
+        {
+          "speaker": "actian",
+          "text": "Pulled 30 nearest neighbours across all six axes.",
+          "action": "speak",
+          "consensus": 0.15
+        },
+        {
+          "speaker": "matcher",
+          "text": "First rank by domain. Finance folk float to the top.",
+          "action": "speak",
+          "consensus": 0.3
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Domain-heavy pool. That clump only landed 41% before.",
+          "action": "disagree",
+          "consensus": 0.3
+        },
+        {
+          "speaker": "actian",
+          "text": "Widening — neighbours by trajectory and seeking too.",
+          "action": "speak",
+          "consensus": 0.55,
+          "banner": "POOL WIDENED"
+        },
+        {
+          "speaker": "band",
+          "text": "Standing by — I'll draft the opener once ranking settles.",
+          "action": "speak",
+          "consensus": 0.65
+        },
+        {
+          "speaker": "gemini",
+          "text": "Mixed domains now, shared arcs and asks. Healthier spread.",
+          "action": "agree",
+          "consensus": 0.78
+        },
+        {
+          "speaker": "matcher",
+          "text": "Candidate set locked. Fifteen nodes to rank.",
+          "action": "resolve",
+          "consensus": 1.0
+        }
       ]
     },
     {
@@ -38,13 +107,50 @@
       "timer": 30,
       "statusLine": "CONSENSUS · SHARED TRAJECTORY > SHARED TOPIC",
       "script": [
-        {"speaker":"matcher","text":"Scoring on six weighted dimensions. Domain still dominates mine.","action":"speak","consensus":0.10},
-        {"speaker":"evaluator","text":"Same-domain matches landed 41%. Reweight the axes.","action":"disagree","consensus":0.10},
-        {"speaker":"evaluator","text":"Lift trajectory, seeking and style. Demote domain and focus.","action":"speak","consensus":0.35,"banner":"EVALUATOR REWEIGHTS"},
-        {"speaker":"matcher","text":"Re-ranking. Two topic picks fall, two trajectory picks rise.","action":"speak","consensus":0.55},
-        {"speaker":"pioneer","text":"My scorer rates the reweighted top three higher.","action":"agree","consensus":0.75},
-        {"speaker":"profiler","text":"New top pick: same pivot, same ask, same async style.","action":"agree","consensus":0.90,"banner":"MATCHER STOPPED ARGUING"},
-        {"speaker":"introducer","text":"Locking the top three. Drawing edges between them.","action":"resolve","consensus":1.0}
+        {
+          "speaker": "matcher",
+          "text": "Scoring on six weighted dimensions. Domain still dominates mine.",
+          "action": "speak",
+          "consensus": 0.1
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Same-domain matches landed 41%. Reweight the axes.",
+          "action": "disagree",
+          "consensus": 0.1
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Lift trajectory, seeking and style. Demote domain and focus.",
+          "action": "speak",
+          "consensus": 0.35,
+          "banner": "EVALUATOR REWEIGHTS"
+        },
+        {
+          "speaker": "matcher",
+          "text": "Re-ranking. Two topic picks fall, two trajectory picks rise.",
+          "action": "speak",
+          "consensus": 0.55
+        },
+        {
+          "speaker": "pioneer",
+          "text": "My scorer rates the reweighted top three higher.",
+          "action": "agree",
+          "consensus": 0.75
+        },
+        {
+          "speaker": "profiler",
+          "text": "New top pick: same pivot, same ask, same async style.",
+          "action": "agree",
+          "consensus": 0.9,
+          "banner": "MATCHER STOPPED ARGUING"
+        },
+        {
+          "speaker": "introducer",
+          "text": "Locking the top three. Drawing edges between them.",
+          "action": "resolve",
+          "consensus": 1.0
+        }
       ]
     },
     {
@@ -54,13 +160,50 @@
       "timer": 25,
       "statusLine": "CONSENSUS · OUTCOMES SET THE WEIGHTS",
       "script": [
-        {"speaker":"pioneer","text":"Scored 60 held-out connections with the fine-tuned model.","action":"speak","consensus":0.15},
-        {"speaker":"evaluator","text":"Fitting landing against each dimension's similarity.","action":"speak","consensus":0.35},
-        {"speaker":"matcher","text":"Some domain pairs did land — keep a little domain weight.","action":"disagree","consensus":0.35},
-        {"speaker":"pioneer","text":"Held-out agrees: domain helps only beside a shared ask.","action":"speak","consensus":0.58,"banner":"HELD-OUT SCORES IN"},
-        {"speaker":"evaluator","text":"Coefficients become the weights. Domain drops to a tiebreaker.","action":"agree","consensus":0.80},
-        {"speaker":"gemini","text":"Per-dimension rationale logged so the graph can explain itself.","action":"agree","consensus":0.90},
-        {"speaker":"evaluator","text":"New weight set ready for the promotion gate.","action":"resolve","consensus":1.0,"banner":"WEIGHTS REFIT"}
+        {
+          "speaker": "pioneer",
+          "text": "Scored 60 held-out connections with the fine-tuned model.",
+          "action": "speak",
+          "consensus": 0.15
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Fitting landing against each dimension's similarity.",
+          "action": "speak",
+          "consensus": 0.35
+        },
+        {
+          "speaker": "matcher",
+          "text": "Some domain pairs did land — keep a little domain weight.",
+          "action": "disagree",
+          "consensus": 0.35
+        },
+        {
+          "speaker": "pioneer",
+          "text": "Held-out agrees: domain helps only beside a shared ask.",
+          "action": "speak",
+          "consensus": 0.58,
+          "banner": "HELD-OUT SCORES IN"
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Coefficients become the weights. Domain drops to a tiebreaker.",
+          "action": "agree",
+          "consensus": 0.8
+        },
+        {
+          "speaker": "gemini",
+          "text": "Per-dimension rationale logged so the graph can explain itself.",
+          "action": "agree",
+          "consensus": 0.9
+        },
+        {
+          "speaker": "evaluator",
+          "text": "New weight set ready for the promotion gate.",
+          "action": "resolve",
+          "consensus": 1.0,
+          "banner": "WEIGHTS REFIT"
+        }
       ]
     },
     {
@@ -70,12 +213,45 @@
       "timer": 25,
       "statusLine": "CONSENSUS · PROMOTE ONLY ON IMPROVEMENT",
       "script": [
-        {"speaker":"evaluator","text":"Gate check: promote the new weights only if held-out improves.","action":"speak","consensus":0.20},
-        {"speaker":"pioneer","text":"Held-out up 41% → 84% since generation 0. No regression.","action":"agree","consensus":0.48,"banner":"CONNECTION-RATE ↑ 84%"},
-        {"speaker":"evaluator","text":"Improvement clears the gate. Promoting generation six.","action":"speak","consensus":0.66,"banner":"GATE PASSED"},
-        {"speaker":"matcher","text":"Re-clustering live — topic clumps dissolving into arcs.","action":"agree","consensus":0.84},
-        {"speaker":"actian","text":"Vector store refreshed under the six new weights.","action":"agree","consensus":0.93},
-        {"speaker":"introducer","text":"New weights pushed to the graph. Rolling it.","action":"resolve","consensus":1.0,"banner":"WEIGHTS PROMOTED"}
+        {
+          "speaker": "evaluator",
+          "text": "Gate check: promote the new weights only if held-out improves.",
+          "action": "speak",
+          "consensus": 0.2
+        },
+        {
+          "speaker": "pioneer",
+          "text": "Held-out up 41% → 84% since generation 0. No regression.",
+          "action": "agree",
+          "consensus": 0.48,
+          "banner": "CONNECTION-RATE ↑ 84%"
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Improvement clears the gate. Promoting generation six.",
+          "action": "speak",
+          "consensus": 0.66,
+          "banner": "GATE PASSED"
+        },
+        {
+          "speaker": "matcher",
+          "text": "Re-clustering live — topic clumps dissolving into arcs.",
+          "action": "agree",
+          "consensus": 0.84
+        },
+        {
+          "speaker": "actian",
+          "text": "Vector store refreshed under the six new weights.",
+          "action": "agree",
+          "consensus": 0.93
+        },
+        {
+          "speaker": "introducer",
+          "text": "New weights pushed to the graph. Rolling it.",
+          "action": "resolve",
+          "consensus": 1.0,
+          "banner": "WEIGHTS PROMOTED"
+        }
       ]
     },
     {
@@ -85,13 +261,50 @@
       "timer": 30,
       "statusLine": "CONSENSUS · OPENER LEADS WITH THE SHARED PATH",
       "script": [
-        {"speaker":"introducer","text":"Drafting the opener for your top match via BAND.","action":"speak","consensus":0.15},
-        {"speaker":"band","text":"First draft leads with the shared finance domain.","action":"speak","consensus":0.30},
-        {"speaker":"evaluator","text":"Domain openers stall. Lead with the pivot, the ask, the style.","action":"disagree","consensus":0.30},
-        {"speaker":"gemini","text":"Reframed: both left finance to build, both want a cofounder.","action":"speak","consensus":0.55},
-        {"speaker":"band","text":"Redraft names the shared path and async style. Warm, specific.","action":"agree","consensus":0.78,"banner":"OPENER REDRAFTED"},
-        {"speaker":"introducer","text":"Both sides opted in. Sending the intro.","action":"agree","consensus":0.92},
-        {"speaker":"introducer","text":"Introduction delivered. Watching for the reply.","action":"resolve","consensus":1.0,"banner":"INTRO SENT"}
+        {
+          "speaker": "introducer",
+          "text": "Drafting the opener for your top match via BAND.",
+          "action": "speak",
+          "consensus": 0.15
+        },
+        {
+          "speaker": "band",
+          "text": "First draft leads with the shared finance domain.",
+          "action": "speak",
+          "consensus": 0.3
+        },
+        {
+          "speaker": "evaluator",
+          "text": "Domain openers stall. Lead with the pivot, the ask, the style.",
+          "action": "disagree",
+          "consensus": 0.3
+        },
+        {
+          "speaker": "gemini",
+          "text": "Reframed: both left finance to build, both want a cofounder.",
+          "action": "speak",
+          "consensus": 0.55
+        },
+        {
+          "speaker": "band",
+          "text": "Redraft names the shared path and async style. Warm, specific.",
+          "action": "agree",
+          "consensus": 0.78,
+          "banner": "OPENER REDRAFTED"
+        },
+        {
+          "speaker": "introducer",
+          "text": "Both sides opted in. Sending the intro.",
+          "action": "agree",
+          "consensus": 0.92
+        },
+        {
+          "speaker": "introducer",
+          "text": "Introduction delivered. Watching for the reply.",
+          "action": "resolve",
+          "consensus": 1.0,
+          "banner": "INTRO SENT"
+        }
       ]
     }
   ]
