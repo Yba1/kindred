@@ -36,6 +36,21 @@
   --agree: #5aa860;
   --disagree: #c05a5a;
 
+  /* --- ink that sits ON an accent, and the chunky pixel drop shadows --- */
+  --ink-on-lamp: #3a2c00;
+  --ink-on-accent: #f7e6f7;
+  --ink-on-agree: #06210a;
+  --shadow-lamp: #b8942f;
+  --shadow-accent: #6d3f6d;
+  --shadow-key: #1a1636;
+
+  /* --- overlays: scrim over the graph, glass over the frame --- */
+  --scrim: rgba(12, 12, 28, .84);
+  --glass: rgba(21, 21, 46, .82);
+  --drop: 0 6px 18px rgba(0, 0, 0, .5);
+  --drop-lg: 0 18px 48px rgba(0, 0, 0, .62);
+  --focus-ring: rgba(176, 106, 176, .38);
+
   /* --- type --- */
   --font-pixel: "Press Start 2P", monospace;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -49,5 +64,7 @@
   --radius: 6px;
   --radius-lg: 10px;
   --panel-w: 348px;
+  --intake-w: 580px;
+  --intake-area-h: 172px;
   --gap: 14px;
 }
