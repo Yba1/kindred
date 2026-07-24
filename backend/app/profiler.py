@@ -1,17 +1,23 @@
-"""Profiler — raw intake context -> structured Profile.
+"""Profiler — raw intake context -> structured Profile, plus match reasoning.
 
-Live: Gemini reasons out roles / trajectory / the ask.
-Fallback: a heuristic that pulls the same fields with regex + keyword cues, so the
-route works with no key. Either way the output is roles + trajectory + seeking —
-reasoning about the person, never bare topic tags.
+Live: Gemini reasons out roles / trajectory / the ask, and writes the "why these
+two" lines the frontend shows on node click.
+Fallback: a heuristic that pulls the same fields with regex + keyword cues, and
+template reasons, so the route works with no key. Either way the output is roles
++ trajectory + seeking — reasoning about the person, never bare topic tags.
+
+Both live paths go through `config.gemini_call`, which returns None on any
+failure (missing SDK, bad key, 429, timeout, malformed JSON). None always means
+"use the deterministic path", so a Gemini problem can never fail a request.
 """
 from __future__ import annotations
 
 import json
 import re
 import uuid
+from typing import Any, Iterable, Mapping, Optional, Sequence
 
-from .config import settings
+from . import config
 from .schemas import Profile
 
 _PROMPT = """You are Kindred's Profiler. Read the person's intake context and return a JSON
@@ -28,25 +34,200 @@ Return ONLY the JSON object, no prose. Intake context:
 {context}
 ---"""
 
+# One call covers the whole result set — never one call per node.
+_REASON_PROMPT = """You are Kindred's matchmaker. Someone is looking at their match graph and
+clicked through the people below. For EACH candidate, write why this specific
+pair is worth a conversation.
+
+Rules:
+- 1 to 3 reasons per candidate. Each is a short phrase under 90 characters.
+- Be specific and human. Name the shared arc, the concrete overlap, or the
+  trade: what one of them has that the other is explicitly asking for.
+- The strongest reason is complementarity ("you want X, they do X"), then a
+  shared trajectory, then a shared topic. Lead with the strongest.
+- Write to the user as "you"; call the candidate by their first name.
+- Use ONLY the facts given. Never invent employers, tools or history.
+- No trailing periods. Do not restate the score.
+
+Return ONLY a JSON object mapping each candidate id to its array of reasons,
+e.g. {"p_maya": ["you want a cofounder; Maya is hiring one", "both left trading desks for agent infra"]}
+
+THE USER:
+{user}
+
+CANDIDATES:
+{candidates}"""
+
+_MAX_REASON_CANDIDATES = 15   # bounds prompt size; the rest keep their templates
+_MAX_REASON_LEN = 140
+
 
 def _new_id(prefix: str = "p") -> str:
     return f"{prefix}_{uuid.uuid4().hex[:8]}"
 
 
+def _fill(template: str, **slots: str) -> str:
+    """Substitute {slots} literally. `str.format` is unusable here: both the
+    intake context and the candidate JSON routinely contain braces."""
+    out = template
+    for key, value in slots.items():
+        out = out.replace("{" + key + "}", value)
+    return out
+
+
+def _json_object(raw: str) -> Optional[dict]:
+    """Parse a JSON object out of a model response, code fences and all."""
+    if not raw:
+        return None
+    text = re.sub(r"^```(?:json)?|```$", "", raw.strip(), flags=re.MULTILINE).strip()
+    try:
+        data = json.loads(text)
+    except Exception:
+        start, end = text.find("{"), text.rfind("}")
+        if start < 0 or end <= start:
+            return None
+        try:
+            data = json.loads(text[start : end + 1])
+        except Exception:
+            return None
+    return data if isinstance(data, dict) else None
+
+
 # --------------------------------------------------------------------------- #
 #  Gemini path
 # --------------------------------------------------------------------------- #
-def _gemini_profile(context: str) -> dict | None:  # pragma: no cover - network
-    try:
-        import google.generativeai as genai
+def _generate_config(max_tokens: int) -> dict:
+    cfg: dict = {
+        "response_mime_type": "application/json",
+        "temperature": 0.4,
+        "max_output_tokens": max_tokens,
+    }
+    # 2.5 models think by default and we want a fast, cheap structured answer.
+    # Older models reject the knob, so only send it where it exists.
+    if "gemini-2.5" in config.settings.gemini_model:
+        cfg["thinking_config"] = {"thinking_budget": 0}
+    return cfg
 
-        genai.configure(api_key=settings.gemini_api_key)
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        resp = model.generate_content(_PROMPT.format(context=context))
-        raw = re.sub(r"^```(?:json)?|```$", "", resp.text.strip(), flags=re.MULTILINE).strip()
-        return json.loads(raw)
+
+def _generate(prompt: str, *, op: str, max_tokens: int) -> Optional[dict]:
+    """One guarded generate_content call that must return a JSON object."""
+    resp = config.gemini_call(
+        lambda client: client.models.generate_content(
+            model=config.settings.gemini_model,
+            contents=prompt,
+            config=_generate_config(max_tokens),
+        ),
+        kind="generate",
+        op=op,
+    )
+    if resp is None:
+        return None
+    try:
+        return _json_object(getattr(resp, "text", "") or "")
     except Exception:
         return None
+
+
+def _gemini_profile(context: str) -> Optional[dict]:
+    return _generate(_fill(_PROMPT, context=context), op="profile", max_tokens=600)
+
+
+def _clean_reasons(raw: Any) -> list[str]:
+    if isinstance(raw, str):
+        raw = [raw]
+    if not isinstance(raw, (list, tuple)):
+        return []
+    out: list[str] = []
+    for item in raw:
+        text = str(item).strip().strip("-•").strip()
+        if not text:
+            continue
+        out.append(text[:_MAX_REASON_LEN].rstrip(" ."))
+        if len(out) == 3:
+            break
+    return out
+
+
+def gemini_reasons(user: Profile, candidates: Sequence[Mapping[str, Any]]) -> dict[str, list[str]]:
+    """Gemini-written match reasons for a batch of candidates.
+
+    ONE API call for the whole batch (free-tier quota is per request, not per
+    token). Returns {} when Gemini is unavailable or the answer is unusable —
+    callers keep their template reasons for any id not returned here.
+    """
+    if not candidates or not config.settings.gemini_enabled:
+        return {}
+    known = {str(c.get("id")) for c in candidates if c.get("id")}
+    if not known:
+        return {}
+    payload = {
+        "name": user.name,
+        "roles": user.roles,
+        "trajectory": user.trajectory,
+        "seeking": user.seeking,
+        "domain": user.domain,
+        "tags": user.tags,
+        "summary": user.summary,
+    }
+    prompt = _fill(
+        _REASON_PROMPT,
+        user=json.dumps(payload, ensure_ascii=False),
+        candidates=json.dumps([dict(c) for c in candidates], ensure_ascii=False),
+    )
+    data = _generate(prompt, op="reasons", max_tokens=2048)
+    if not data:
+        return {}
+    out: dict[str, list[str]] = {}
+    for key, value in data.items():
+        key = str(key)
+        if key not in known:
+            continue
+        reasons = _clean_reasons(value)
+        if reasons:
+            out[key] = reasons
+    return out
+
+
+def _candidate_payload(match: Any, meta: Mapping[str, Any]) -> dict:
+    return {
+        "id": match.id,
+        "name": getattr(match, "name", "") or meta.get("name", ""),
+        "roles": list(meta.get("roles") or [])[:4],
+        "trajectory": meta.get("trajectory", ""),
+        "seeking": meta.get("seeking", ""),
+        "domain": meta.get("domain", ""),
+        "tags": list(meta.get("tags") or [])[:5],
+        "summary": meta.get("summary", ""),
+    }
+
+
+def apply_gemini_reasons(
+    user: Profile, matches: Iterable[Any], metas: Mapping[str, Mapping[str, Any]]
+) -> None:
+    """Upgrade `match.reasons` in place with Gemini-written lines.
+
+    Call it once, after ranking, with the candidate metadata:
+
+        apply_gemini_reasons(user, matches, {n.id: n.meta for n in neighbours})
+
+    A no-op without a key, and a no-op on any failure — the template reasons
+    already on each match stay exactly as they are.
+    """
+    matches = list(matches)
+    if not matches or not config.settings.gemini_enabled:
+        return
+    try:
+        payload = [
+            _candidate_payload(m, metas.get(m.id) or {})
+            for m in matches[:_MAX_REASON_CANDIDATES]
+        ]
+        written = gemini_reasons(user, payload)
+        for match in matches:
+            better = written.get(match.id)
+            if better:
+                match.reasons = better
+    except Exception:  # pragma: no cover - defensive; gemini_reasons already guards
+        return
 
 
 # --------------------------------------------------------------------------- #
@@ -183,16 +364,39 @@ def _heuristic_profile(context: str) -> dict:
 # --------------------------------------------------------------------------- #
 #  Public
 # --------------------------------------------------------------------------- #
+def _strings(value: Any, limit: int) -> list[str]:
+    if isinstance(value, str):
+        value = [value]
+    if not isinstance(value, (list, tuple)):
+        return []
+    return [str(v).strip() for v in value if str(v).strip()][:limit]
+
+
 def build_profile(context: str, name: str | None = None, id: str | None = None) -> Profile:
-    data = _gemini_profile(context) if settings.gemini_enabled else None
-    source = "gemini" if data else "heuristic"
-    if data is None:
-        data = _heuristic_profile(context)
+    """Intake context -> Profile. Gemini when configured, heuristic otherwise.
+
+    The heuristic result is always computed (it is pure regex, essentially free)
+    and used as the base layer, so a Gemini answer that omits or empties a field
+    still yields a complete profile instead of a hollow one.
+    """
+    data = _heuristic_profile(context)
+    live = _gemini_profile(context) if config.settings.gemini_enabled else None
+    source = "heuristic"
+    if live:
+        source = "gemini"
+        for key in ("name", "trajectory", "seeking", "domain", "summary"):
+            value = live.get(key)
+            if isinstance(value, str) and value.strip():
+                data[key] = value.strip()
+        for key, limit in (("roles", 4), ("tags", 5)):
+            values = _strings(live.get(key), limit)
+            if values:
+                data[key] = values
 
     trajectory = (data.get("trajectory") or "").strip()
     seeking = (data.get("seeking") or "").strip()
     domain = (data.get("domain") or "general").strip()
-    roles = [str(r).strip() for r in (data.get("roles") or []) if str(r).strip()][:4]
+    roles = _strings(data.get("roles"), 4)
     if not roles:
         roles = derive_roles(trajectory, seeking, domain)
 
@@ -203,7 +407,7 @@ def build_profile(context: str, name: str | None = None, id: str | None = None) 
         roles=roles,
         trajectory=trajectory,
         seeking=seeking,
-        tags=[str(t).strip() for t in (data.get("tags") or []) if str(t).strip()][:5],
+        tags=_strings(data.get("tags"), 5),
         domain=domain,
         summary=(data.get("summary") or "").strip(),
         source=source,
@@ -211,4 +415,5 @@ def build_profile(context: str, name: str | None = None, id: str | None = None) 
 
 
 def profiler_mode() -> str:
-    return "gemini" if settings.gemini_enabled else "heuristic"
+    """What /health reports — the mode actually in force right now."""
+    return "gemini" if config.gemini_live() else "heuristic"
