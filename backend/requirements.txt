@@ -1,13 +1,21 @@
 # Kindred backend — Workstream A
-# Core service. Everything below google-generativeai is required; the Gemini
-# and Actian SDKs are optional — the app degrades to deterministic fallbacks
-# when their keys/hosts are absent, so it always boots for the demo.
+# Core service + the Actian VectorAI DB SDK. The Gemini SDK stays optional —
+# imports are guarded and the app degrades to deterministic fallbacks when a
+# key/host is absent, so it always boots for the demo.
 fastapi>=0.110
 uvicorn[standard]>=0.29
 pydantic>=2.6
 numpy>=1.26
 python-dotenv>=1.0
 
+# Actian VectorAI DB — gRPC client (import name: actian_vectorai).
+# Talks to `actian/vectorai:latest` on ACTIAN_HOST:ACTIAN_PORT (6574 = gRPC).
+# Absent or unreachable -> app.actian falls back to the numpy cosine index.
+actian-vectorai-client>=1.0.2
+
+# --- tests: `cd backend && ./.venv/bin/python -m pytest tests -q` ---
+pytest>=8.0
+httpx>=0.27                  # fastapi.testclient dependency
+
 # --- optional sponsors (imports are guarded; safe to omit) ---
 # google-generativeai>=0.7   # Gemini: profiling + reasoning + embeddings
-# actian-vector              # Actian vector store (falls back to numpy cosine)
