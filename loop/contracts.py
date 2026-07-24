@@ -18,32 +18,43 @@ from dataclasses import dataclass, field
 
 # ---- domain vocab (deterministic) ----
 TOPICS   = ["ai-infra", "climate", "fintech", "biotech", "consumer", "devtools", "robotics", "edtech"]
-STAGES   = ["student", "ic", "senior", "founder", "investor", "operator"]
+FOCI     = ["research", "product", "growth", "infra", "design", "ops"]     # current focus
+STAGES   = ["student", "ic", "senior", "founder", "investor", "operator"]  # trajectory stages
 SEEKING  = ["cofounder", "hire", "mentor", "investor", "peer", "customer"]
+STYLES   = ["async", "sync", "builder", "researcher", "connector"]         # collaboration style
+EXPERTISE = ["junior", "mid", "senior", "expert"]                          # expertise level (ordinal)
 EMBED_DIM = 16
 
-# ---- feature order (THE weight vector aligns to this, D->B contract) ----
-FEATURES = ["topic_sim", "trajectory_sim", "seeking_match", "embed_cos"]
+# ---- the SIX profile dimensions and the feature that compares each ----
+# The weight vector (D->B contract) is length-6 and aligns to THIS order.
+# Demo truth: domain_sim + focus_sim start heavily weighted (naive matcher) but are
+# WEAK predictors; trajectory_sim + seeking_match + collab_sim are the real signal;
+# expertise_fit rewards someone ~one step ahead. The Evaluator learns this from outcomes.
+FEATURES = ["domain_sim", "focus_sim", "trajectory_sim", "seeking_match", "collab_sim", "expertise_fit"]
 
 
 @dataclass
 class Persona:
     id: str
     name: str
-    topic: str                       # one of TOPICS
+    topic: str                       # DOMAIN — one of TOPICS
+    focus: str                       # current FOCUS — one of FOCI
     stage: str                       # current stage, one of STAGES
-    trajectory: tuple                # ordered path of stages, e.g. ("ic","senior","founder")
-    seeking: str                     # one of SEEKING
-    embedding: list                  # length EMBED_DIM, floats in [-1,1]
+    trajectory: tuple                # TRAJECTORY — ordered path of stages, e.g. ("ic","senior","founder")
+    seeking: str                     # SEEKING/intent — one of SEEKING
+    style: str                       # COLLABORATION STYLE — one of STYLES
+    expertise: str                   # EXPERTISE level — one of EXPERTISE (ordinal)
+    embedding: list                  # length EMBED_DIM, floats in [-1,1] (domain-correlated)
 
 
 @dataclass
 class Pair:
     a: str                           # persona id
     b: str                           # persona id
-    same_topic: bool
-    same_trajectory: bool
-    seeking_match: bool
+    same_topic: bool                 # same domain
+    same_trajectory: bool            # shared path
+    seeking_match: bool              # compatible intent
+    same_style: bool                 # matching collaboration style
     landed: int                      # ground-truth label: 1 = connected, 0 = didn't
 
 
