@@ -114,6 +114,10 @@ class GraphEdge(BaseModel):
     source: str
     target: str
     weight: float
+    # per-dim raw similarities [domain, trajectory, seeking, stage] — lets the
+    # frontend's re-cluster button rescore edges under a real weight vector
+    # instead of leaving weight pinned to whatever it was computed at
+    features: list[float] | None = None
 
 
 class GraphResponse(BaseModel):

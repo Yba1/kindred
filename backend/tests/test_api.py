@@ -60,10 +60,14 @@ def test_graph_exact_contract():
     # EXACT node keys
     for n in g["nodes"]:
         assert set(n) == {"id", "name", "score", "x", "y"}
-    # EXACT edge keys, all from center
+    # EXACT edge keys, all from center. `features` is a sanctioned additive
+    # extension (frontend/README.md's own ask) so the re-cluster button can
+    # rescore edges under a real weight vector instead of a pinned weight.
     for e in g["edges"]:
-        assert set(e) == {"source", "target", "weight"}
+        assert set(e) == {"source", "target", "weight", "features"}
         assert e["source"] == "user"
+        assert isinstance(e["features"], list) and len(e["features"]) == 4
+        assert all(0.0 <= f <= 1.0 for f in e["features"])
     # reasons: 1-3 strings per non-center node
     for n in g["nodes"][1:]:
         rs = g["reasons"].get(n["id"])
