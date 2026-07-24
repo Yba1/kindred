@@ -96,15 +96,30 @@ def _json_object(raw: str) -> Optional[dict]:
 # --------------------------------------------------------------------------- #
 #  Gemini path
 # --------------------------------------------------------------------------- #
+# Reasoning models bill their private thinking against max_output_tokens, so the
+# cap has to cover thinking AND the answer. Measured on gemini-flash-latest: a
+# profile call spent 574 tokens thinking and had 22 left for output, truncating
+# the JSON mid-object — which parsed as failure and silently fell back to the
+# heuristic with nothing logged. Verified: same call at 2048 leaves ~112 output
+# tokens and returns valid JSON.
+_THINKING_HEADROOM = 1400
+
+
 def _generate_config(max_tokens: int) -> dict:
+    budget = max_tokens
+    # 2.5 models think by default and we want a fast, cheap structured answer.
+    # Older models reject the knob, and so does gemini-flash-latest (400
+    # INVALID_ARGUMENT), so only send it where it is actually accepted — and
+    # where it is not, buy the headroom instead.
+    thinking_off = "gemini-2.5" in config.settings.gemini_model
+    if not thinking_off:
+        budget += _THINKING_HEADROOM
     cfg: dict = {
         "response_mime_type": "application/json",
         "temperature": 0.4,
-        "max_output_tokens": max_tokens,
+        "max_output_tokens": budget,
     }
-    # 2.5 models think by default and we want a fast, cheap structured answer.
-    # Older models reject the knob, so only send it where it exists.
-    if "gemini-2.5" in config.settings.gemini_model:
+    if thinking_off:
         cfg["thinking_config"] = {"thinking_budget": 0}
     return cfg
 

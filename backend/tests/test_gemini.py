@@ -373,11 +373,32 @@ def test_legacy_embed_model_skips_the_dimension_flag(gemini, monkeypatch):
     assert "output_dimensionality" not in gemini.embed_calls[0]["config"]
 
 
-def test_older_chat_model_skips_the_thinking_flag(gemini, monkeypatch):
-    """An overridden GEMINI_MODEL must not 400 on a knob it doesn't have."""
-    assert "thinking_config" in profiler._generate_config(600)  # default is 2.5
+def test_only_2_5_models_get_the_thinking_flag(gemini, monkeypatch):
+    """An overridden GEMINI_MODEL must not 400 on a knob it doesn't have.
+
+    The default is now `gemini-flash-latest`, which rejects thinking_budget
+    with a 400 — so the flag must be withheld there too, not just on 1.5.
+    """
+    assert "thinking_config" not in profiler._generate_config(600)  # default: flash-latest
     use_settings(monkeypatch, gemini_api_key="test-key", gemini_model="gemini-1.5-flash")
     assert "thinking_config" not in profiler._generate_config(600)
+    use_settings(monkeypatch, gemini_api_key="test-key", gemini_model="gemini-2.5-flash")
+    assert "thinking_config" in profiler._generate_config(600)
+
+
+def test_models_that_think_get_budget_headroom(gemini, monkeypatch):
+    """Thinking bills against max_output_tokens, so the cap must cover both.
+
+    Regression guard for a silent failure: at a flat 600 the real API spent 574
+    tokens thinking and truncated the JSON, which parsed as failure and fell
+    back to the heuristic with nothing logged.
+    """
+    use_settings(monkeypatch, gemini_api_key="test-key", gemini_model="gemini-flash-latest")
+    assert profiler._generate_config(600)["max_output_tokens"] > 1500
+
+    # where thinking can be switched off, the caller's budget is honoured as-is
+    use_settings(monkeypatch, gemini_api_key="test-key", gemini_model="gemini-2.5-flash")
+    assert profiler._generate_config(600)["max_output_tokens"] == 600
 
 
 def test_cosine_survives_mismatched_dimensions():

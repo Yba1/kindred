@@ -67,7 +67,14 @@ class Settings:
     gemini_api_key: str = field(default_factory=lambda: os.getenv("GEMINI_API_KEY", "").strip())
     # Model ids are overridable but never *required* — defaults are the current
     # free-tier friendly pair.
-    gemini_model: str = field(default_factory=lambda: _env_str("GEMINI_MODEL", "gemini-2.5-flash"))
+    #
+    # Use the floating `-latest` alias, NOT a pinned version. Verified against a
+    # real key: `gemini-2.5-flash` and `gemini-2.5-flash-lite` both 404 with
+    # "no longer available to new users" even though models.list() still returns
+    # them, so a freshly-issued key silently fell back to the heuristic path.
+    # `gemini-flash-latest` answers. (`gemini-flash-lite-latest` also works if
+    # the free-tier RPM becomes the binding constraint.)
+    gemini_model: str = field(default_factory=lambda: _env_str("GEMINI_MODEL", "gemini-flash-latest"))
     gemini_embed_model: str = field(
         default_factory=lambda: _env_str("GEMINI_EMBED_MODEL", "gemini-embedding-001")
     )
