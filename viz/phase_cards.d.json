@@ -1,0 +1,80 @@
+{
+  "_note": "Workstream D — the heaviest deck. Full arc: synthetic data -> evolution loop 41->84% -> live viz integration -> demo freeze. Play via village.html?cards=phase_cards.d.json",
+  "cards": [
+    {
+      "round": "NIGHT · SYNTH",
+      "objective": "D · GENERATE THE COHORT",
+      "subtitle": "No users yet, so we fabricate a believable town.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · LABELS MUST MATCH REAL BASE-RATE",
+      "script": [
+        {"speaker":"gemini","text":"Spinning up 300 synthetic personas — role, path, what they seek.","action":"speak","consensus":0.10},
+        {"speaker":"profiler","text":"Profiling each one so they look like real Kindred users.","action":"speak","consensus":0.18},
+        {"speaker":"matcher","text":"Pairing them up — 250 candidate connections to label.","action":"speak","consensus":0.28},
+        {"speaker":"evaluator","text":"Label honestly: same-topic pairs should land ~41%, not more.","action":"disagree","consensus":0.28},
+        {"speaker":"evaluator","text":"Calibrated. Base-rate locked so the loop has room to climb.","action":"speak","consensus":0.55,"banner":"BASE-RATE 41% LOCKED"},
+        {"speaker":"actian","text":"Vectors + labels written to the store. Cohort is ready.","action":"agree","consensus":0.80},
+        {"speaker":"pioneer","text":"Held-out split reserved — 60 pairs the loop never sees.","action":"resolve","consensus":1.0,"banner":"COHORT READY"}
+      ]
+    },
+    {
+      "round": "DAY · GEN 0",
+      "objective": "D · FIRST FIT",
+      "subtitle": "Fit weights on outcomes, measure where we start.",
+      "timer": 28,
+      "statusLine": "CONSENSUS · TOPIC ALONE ISN'T ENOUGH",
+      "script": [
+        {"speaker":"matcher","text":"Gen 0 ranks purely on shared topic. Scoring the cohort.","action":"speak","consensus":0.15},
+        {"speaker":"pioneer","text":"Connection-rate on held-out: 41%. That's our floor.","action":"speak","consensus":0.25},
+        {"speaker":"evaluator","text":"Told you — topic is a weak signal. Refit on trajectory.","action":"disagree","consensus":0.25},
+        {"speaker":"evaluator","text":"Weighting shared path + what they're seeking now.","action":"speak","consensus":0.50,"banner":"EVALUATOR REWEIGHTS"},
+        {"speaker":"matcher","text":"Re-ranking with the new weights — topic clumps loosening.","action":"speak","consensus":0.70},
+        {"speaker":"profiler","text":"New top pairs share a path, not just a subject.","action":"agree","consensus":0.86},
+        {"speaker":"evaluator","text":"Generation 0 logged. Roll the loop forward.","action":"resolve","consensus":1.0,"banner":"GEN 0 · 41%"}
+      ]
+    },
+    {
+      "round": "NIGHT · GEN 5",
+      "objective": "D · THE CLIMB",
+      "subtitle": "Six generations folding in what actually landed.",
+      "timer": 26,
+      "statusLine": "CONSENSUS · WEIGHTS SHIFT OFF DOMAIN",
+      "script": [
+        {"speaker":"pioneer","text":"Re-scored held-out each generation with the fine-tuned model.","action":"speak","consensus":0.30},
+        {"speaker":"evaluator","text":"Refitting weights on every new landing outcome.","action":"speak","consensus":0.45},
+        {"speaker":"pioneer","text":"Rate climbing: 41 -> 58 -> 71 -> 84% by generation 5.","action":"agree","consensus":0.78,"banner":"CONNECTION-RATE ↑ 84%"},
+        {"speaker":"matcher","text":"Graph re-clustering live — domain clumps fully dissolved.","action":"agree","consensus":0.90},
+        {"speaker":"introducer","text":"Promoting generation-5 weights as the new default.","action":"resolve","consensus":1.0,"banner":"WEIGHTS PROMOTED"}
+      ]
+    },
+    {
+      "round": "DAY · GLUE",
+      "objective": "D · WIRE THE TOWN LIVE",
+      "subtitle": "Every agent's real events streaming into one village.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · ONE CLOCK, ONE STREAM",
+      "script": [
+        {"speaker":"introducer","text":"Opening the SSE stream — backend, loop and graph all emit here.","action":"speak","consensus":0.20},
+        {"speaker":"band","text":"Intro-thread events flowing in on the same channel.","action":"speak","consensus":0.32},
+        {"speaker":"matcher","text":"Careful — graph re-layout and my events can race.","action":"disagree","consensus":0.32},
+        {"speaker":"introducer","text":"One clock drives all panes now. No more races.","action":"speak","consensus":0.60,"banner":"STREAMS SYNCED"},
+        {"speaker":"gemini","text":"Reasoning strings show under each node as it's argued.","action":"agree","consensus":0.82},
+        {"speaker":"introducer","text":"Village is live-wired to the real system. Glue holds.","action":"resolve","consensus":1.0,"banner":"LIVE-WIRED"}
+      ]
+    },
+    {
+      "round": "NIGHT · FREEZE",
+      "objective": "D · LOCK THE DEMO",
+      "subtitle": "Record a frame-exact replay so nothing can break on stage.",
+      "timer": 24,
+      "statusLine": "CONSENSUS · REPLAY IS DETERMINISTIC",
+      "script": [
+        {"speaker":"evaluator","text":"Capturing run.json — every event, in order, timestamped.","action":"speak","consensus":0.35},
+        {"speaker":"pioneer","text":"Replay reproduces the 41 -> 84% climb frame-for-frame.","action":"agree","consensus":0.66,"banner":"--replay VERIFIED"},
+        {"speaker":"introducer","text":"Live mode stays one keypress away if the wifi behaves.","action":"speak","consensus":0.80},
+        {"speaker":"band","text":"Feature freeze. Nothing new touches the demo path.","action":"agree","consensus":0.92,"banner":"FROZEN"},
+        {"speaker":"gemini","text":"Deck's locked. Kindred's ready to argue in front of judges.","action":"resolve","consensus":1.0,"banner":"DEMO READY"}
+      ]
+    }
+  ]
+}
