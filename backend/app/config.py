@@ -55,6 +55,13 @@ def _env_int(name: str, default: int) -> int:
         return default
 
 
+def _env_float(name: str, default: float) -> float:
+    try:
+        return float(os.getenv(name, "").strip() or default)
+    except ValueError:
+        return default
+
+
 @dataclass(frozen=True)
 class Settings:
     gemini_api_key: str = field(default_factory=lambda: os.getenv("GEMINI_API_KEY", "").strip())
@@ -72,11 +79,16 @@ class Settings:
     gemini_embed_rpm: int = field(default_factory=lambda: _env_int("GEMINI_EMBED_RPM", 90))
     gemini_cooldown_s: float = field(default_factory=lambda: _env_float("GEMINI_COOLDOWN_S", 45.0))
 
+    # Actian VectorAI DB. HOST + PORT is all the container needs (gRPC on 6574,
+    # auth disabled by default). DB is a collection-name prefix; USER/PASSWORD
+    # are only used when the deployment has auth switched on.
     actian_host: str = field(default_factory=lambda: os.getenv("ACTIAN_HOST", "").strip())
     actian_port: str = field(default_factory=lambda: os.getenv("ACTIAN_PORT", "").strip())
     actian_db: str = field(default_factory=lambda: os.getenv("ACTIAN_DB", "").strip())
     actian_user: str = field(default_factory=lambda: os.getenv("ACTIAN_USER", "").strip())
     actian_password: str = field(default_factory=lambda: os.getenv("ACTIAN_PASSWORD", "").strip())
+    # Keep this short: it bounds how long boot stalls before the numpy fallback engages.
+    actian_timeout: float = field(default_factory=lambda: _env_float("ACTIAN_TIMEOUT", 5.0))
 
     embed_dim: int = field(default_factory=lambda: _env_int("KINDRED_EMBED_DIM", 256))
 
@@ -87,7 +99,8 @@ class Settings:
 
     @property
     def actian_enabled(self) -> bool:
-        return bool(self.actian_host and self.actian_db)
+        # Host alone is enough — no database/user/password on the local container.
+        return bool(self.actian_host)
 
 
 settings = Settings()

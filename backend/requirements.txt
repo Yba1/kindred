@@ -1,13 +1,18 @@
 # Kindred backend — Workstream A
-# Core service. fastapi/uvicorn/pydantic/numpy are required; google-genai is
-# installed by default but imported behind a guard (config.gemini_sdk_available),
-# so the app still boots and serves the full demo if it is absent or if
-# GEMINI_API_KEY is unset. Actian's SDK stays optional the same way.
+# Core service + both sponsor SDKs. Every sponsor import is guarded, so the app
+# boots and serves the full demo when a key/host is absent or the package is
+# missing — it just reports the fallback path on /health.
 fastapi>=0.110
 uvicorn[standard]>=0.29
 pydantic>=2.6
 numpy>=1.26
 python-dotenv>=1.0
+
+# Actian VectorAI DB — gRPC client (import name: actian_vectorai).
+# Talks to `actian/vectorai:latest` on ACTIAN_HOST:ACTIAN_PORT (6574 = gRPC).
+# NOTE: the PyPI name is `actian-vectorai-client`; `actian-vector` does not exist.
+# Absent or unreachable -> app.actian falls back to the numpy cosine index.
+actian-vectorai-client>=1.0.2
 
 # Gemini: profiling + match reasons + embeddings. Runtime-optional — every call
 # site falls back to the deterministic path when it is missing or unconfigured.
@@ -15,9 +20,6 @@ python-dotenv>=1.0
 # `google-generativeai` package is deprecated and is NOT used.
 google-genai>=1.0
 
-# --- test-only ---
-# pytest
-# httpx            # required by fastapi.testclient
-
-# --- optional sponsors (imports are guarded; safe to omit) ---
-# actian-vector    # Actian vector store (falls back to numpy cosine)
+# --- tests: `cd backend && ./.venv/bin/python -m pytest tests -q` ---
+pytest>=8.0
+httpx2                       # fastapi.testclient requires httpx2, not httpx

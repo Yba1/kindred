@@ -1,16 +1,30 @@
-"""Shared test setup.
+"""Shared test setup for both sponsor paths.
 
-Puts `backend/` on sys.path so the suite runs from any cwd, and guarantees every
-test starts from a clean capability state: no Gemini key, empty vector cache,
-untripped circuit breaker.
+Two jobs, and the ORDER matters:
+
+1. Point the suite at a scratch Actian collection prefix. `test_api.py` drives
+   the real app, which upserts every profile it builds — without this, repeated
+   runs silently accumulate "Test User" rows in the collections the demo reads
+   from. This must happen before `app.config` is imported, since `load_dotenv`
+   never overrides an already-set env var.
+2. Guarantee every test starts from a clean Gemini capability state: no key,
+   empty vector cache, untripped circuit breaker.
+
+If Actian isn't running, part 1 is a no-op and the suite runs offline against
+the numpy fallback.
 """
 from __future__ import annotations
 
-import sys
-from dataclasses import replace
-from pathlib import Path
+import os
 
-import pytest
+# MUST precede the `app.config` import below.
+os.environ["ACTIAN_DB"] = "kindred_test"
+
+import sys  # noqa: E402
+from dataclasses import replace  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+import pytest  # noqa: E402
 
 BACKEND = Path(__file__).resolve().parents[1]
 if str(BACKEND) not in sys.path:
@@ -48,3 +62,25 @@ def _clean_capability_state(monkeypatch):
     yield
     config.reset_gemini_state()
     embeddings.reset_cache()
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _drop_test_collections():
+    """Leave no scratch collections behind after the session."""
+    yield
+    try:
+        from actian_vectorai import VectorAIClient
+
+        from app.config import settings
+
+        if not settings.actian_enabled:
+            return
+        with VectorAIClient(
+            f"{settings.actian_host}:{settings.actian_port or '6574'}",
+            timeout=settings.actian_timeout,
+        ) as c:
+            for name in c.collections.list():
+                if name.startswith("kindred_test") or name.startswith("kindred_pytest"):
+                    c.collections.delete(name, strict=False)
+    except Exception:
+        pass
