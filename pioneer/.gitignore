@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# artifacts/ and data/ ARE committed on purpose — the demo must not depend on
+# retraining, and the numbers on the slide should be diffable. Only scratch
+# files from test runs are ignored.
+artifacts/_*.json
+data/_*.jsonl

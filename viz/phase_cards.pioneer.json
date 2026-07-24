@@ -1,0 +1,51 @@
+{
+  "cards": [
+    {
+      "round": "NIGHT · R1",
+      "objective": "PIONEER · TRAINING SET",
+      "subtitle": "Teaching score_pair() from connections that landed or failed.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · TRAIN ON OUTCOMES, NOT SIMILARITY",
+      "script": [
+        {"speaker":"pioneer","text":"Fine-tuning score_pair() on labeled pairs: landed or failed.","action":"speak","consensus":0.10},
+        {"speaker":"band","text":"Feeding it pair profiles plus the intro text that was sent.","action":"speak","consensus":0.28},
+        {"speaker":"evaluator","text":"Watch the balance — failed topic pairs must stay in the set.","action":"disagree","consensus":0.28},
+        {"speaker":"pioneer","text":"Kept them. The 41% failures are the signal, not noise.","action":"speak","consensus":0.55,"banner":"FAILURES KEPT IN"},
+        {"speaker":"gemini","text":"Augmented each pair with trajectory and seeking fields.","action":"agree","consensus":0.75},
+        {"speaker":"evaluator","text":"Split is clean, held-out set untouched. Train it.","action":"agree","consensus":0.90},
+        {"speaker":"pioneer","text":"Fine-tune job running. First checkpoint tonight.","action":"resolve","consensus":1.0,"banner":"TRAINING STARTED"}
+      ]
+    },
+    {
+      "round": "NIGHT · R2",
+      "objective": "PIONEER · F1 SHOWDOWN",
+      "subtitle": "Fine-tuned scorer versus the raw embedding baseline.",
+      "timer": 25,
+      "statusLine": "CONSENSUS · SCORER BEATS BASELINE ON HELD-OUT F1",
+      "script": [
+        {"speaker":"pioneer","text":"Scoring the held-out pairs: my model vs cosine similarity.","action":"speak","consensus":0.15},
+        {"speaker":"evaluator","text":"Baseline predicts topic pairs land. History says 41% of them do.","action":"speak","consensus":0.35},
+        {"speaker":"band","text":"Baseline's F1 looks respectable on the easy pairs though.","action":"disagree","consensus":0.35},
+        {"speaker":"pioneer","text":"On the hard pairs it collapses. My F1 clears it end to end.","action":"speak","consensus":0.62,"banner":"F1 BEATS BASELINE"},
+        {"speaker":"gemini","text":"Checked its top errors — misses are genuinely ambiguous pairs.","action":"agree","consensus":0.80},
+        {"speaker":"evaluator","text":"Margin is real on held-out data. Scorer certified.","action":"resolve","consensus":1.0,"banner":"SCORER CERTIFIED"}
+      ]
+    },
+    {
+      "round": "NIGHT · R3",
+      "objective": "PIONEER · INTO THE LOOP",
+      "subtitle": "Wiring score_pair() in as the evolution loop's judge.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · PIONEER SCORES EVERY GENERATION",
+      "script": [
+        {"speaker":"pioneer","text":"score_pair() exposed to the loop — one call per candidate pair.","action":"speak","consensus":0.10},
+        {"speaker":"evaluator","text":"Each generation's refit now optimises against your scores.","action":"speak","consensus":0.30},
+        {"speaker":"matcher","text":"If the scorer drifts, the whole loop chases a ghost.","action":"disagree","consensus":0.30},
+        {"speaker":"pioneer","text":"Scorer is frozen post-certification. The loop moves, I don't.","action":"speak","consensus":0.55,"banner":"SCORER FROZEN"},
+        {"speaker":"band","text":"Batching calls so a full generation scores in seconds.","action":"agree","consensus":0.72},
+        {"speaker":"evaluator","text":"Dry run: scored generation matches the certified F1.","action":"agree","consensus":0.90},
+        {"speaker":"pioneer","text":"Judge is seated. The loop can evolve.","action":"resolve","consensus":1.0,"banner":"LOOP WIRED"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kindred — sponsor map</title>
+<style>
+  /* One 16:9 slide. Self-contained, no network. Print to PDF at Landscape /
+     "Background graphics" on and it fills a single page. */
+  :root {
+    --ink: #0d1117;
+    --paper: #f6f4ef;
+    --muted: #5c6672;
+    --line: #d6d1c6;
+    --card: #ffffff;
+    --accent: #b4541f;
+    --loop: #1f6f5c;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #e8e4dc; color: var(--ink);
+    font: 16px/1.45 "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    display: grid; place-items: center;
+  }
+  .slide {
+    width: 1280px; height: 720px; flex: none;
+    background: var(--paper); padding: 44px 52px 36px;
+    display: flex; flex-direction: column;
+    box-shadow: 0 18px 50px rgba(0,0,0,.22);
+    position: relative; overflow: hidden;
+  }
+  /* Scale the fixed-size slide down on smaller screens instead of scrolling. */
+  @media (max-width: 1340px) { .slide { transform: scale(.72); } }
+  @media (max-width: 980px)  { .slide { transform: scale(.5); } }
+  @media (max-width: 700px)  { .slide { transform: scale(.34); } }
+
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 22px; }
+  h1 { margin: 0; font-size: 34px; letter-spacing: -.4px; }
+  h1 span { color: var(--muted); font-weight: 400; }
+  .thesis {
+    margin: 7px 0 0; font-size: 15.5px; color: var(--muted);
+    font-family: ui-sans-serif, "Segoe UI", system-ui, sans-serif;
+  }
+
+  .rail { display: flex; align-items: stretch; gap: 0; flex: 1; }
+  .card {
+    /* 2px border on every card so the highlighted one doesn't shift by a pixel. */
+    flex: 1; background: var(--card); border: 2px solid var(--line);
+    border-radius: 9px; padding: 18px 18px 16px;
+    display: flex; flex-direction: column;
+  }
+  .card.pioneer { border-color: var(--accent); box-shadow: 0 4px 16px rgba(180,84,31,.16); }
+  .arrow {
+    flex: none; width: 38px; display: grid; place-items: center;
+    color: var(--muted); font-size: 21px;
+  }
+  .stage {
+    font-family: ui-sans-serif, "Segoe UI", system-ui, sans-serif;
+    font-size: 10.5px; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 7px;
+  }
+  .sponsor { font-size: 21px; font-weight: 700; letter-spacing: -.2px; }
+  .card.pioneer .sponsor { color: var(--accent); }
+  .job {
+    font-family: ui-sans-serif, "Segoe UI", system-ui, sans-serif;
+    font-size: 13.5px; margin-top: 7px; line-height: 1.4;
+  }
+  .artifact {
+    margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--line);
+    font-family: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
+    font-size: 11px; color: var(--muted); word-break: break-word;
+  }
+
+  .feedback {
+    margin-top: 14px; border: 1px solid var(--loop); border-radius: 9px;
+    background: rgba(31,111,92,.06); padding: 11px 16px;
+    display: flex; align-items: center; gap: 14px;
+    font-family: ui-sans-serif, "Segoe UI", system-ui, sans-serif; font-size: 13.5px;
+  }
+  .feedback b { color: var(--loop); font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; }
+  .feedback .flow { color: var(--loop); font-weight: 600; }
+
+  footer {
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 28px;
+    font-family: ui-sans-serif, "Segoe UI", system-ui, sans-serif;
+  }
+  .rule { font-size: 13px; color: var(--muted); max-width: 620px; }
+  .rule strong { color: var(--ink); }
+  .proof { text-align: right; font-size: 12.5px; color: var(--muted); flex: none; }
+  .proof .num {
+    font-family: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
+    font-size: 16px; color: var(--accent); font-weight: 700;
+  }
+  .proof .sub { font-size: 11px; }
+
+  @media print {
+    @page { size: 13.33in 7.5in; margin: 0; }
+    html, body { background: #fff; display: block; height: auto; }
+    .slide { transform: none; box-shadow: none; width: 100%; height: 100vh; }
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+  <header>
+    <h1>Kindred — <span>one job per sponsor, no overlap</span></h1>
+    <p class="thesis">
+      Finds the people closest to you <em>in meaning</em> — then learns what “close” really
+      means from which introductions actually land.
+    </p>
+  </header>
+
+  <div class="rail">
+    <div class="card">
+      <div class="stage">Stage 1 · understand</div>
+      <div class="sponsor">Gemini</div>
+      <div class="job">Reads raw context into a semantic profile — trajectory and the
+        explicit ask, not keywords. Also writes the per-edge reasoning shown on the graph.</div>
+      <div class="artifact">POST /profile → {domain, prior_domain, stage, seeking, offering}</div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="card">
+      <div class="stage">Stage 2 · retrieve</div>
+      <div class="sponsor">Actian</div>
+      <div class="job">Vector store for every profile. Pulls the candidate neighbourhood
+        — wide, by trajectory as well as topic — before anyone ranks it.</div>
+      <div class="artifact">embed(profile) → top-k neighbours</div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="card pioneer">
+      <div class="stage">Stage 3 · judge</div>
+      <div class="sponsor">Pioneer / Fastino</div>
+      <div class="job">The fine-tuned match scorer. Trained on <em>outcomes</em> — landed
+        vs didn’t — not on similarity. One yes/no question, thousands of times a
+        generation, in milliseconds.</div>
+      <div class="artifact">score_pair(a, b) → 0.0–1.0 · LoRA on gliner2-base-v1</div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="card">
+      <div class="stage">Stage 4 · act</div>
+      <div class="sponsor">BAND</div>
+      <div class="job">Opens the intro thread for a match that clears the bar, and is
+        where the outcome becomes observable: did these two actually connect?</div>
+      <div class="artifact">intro thread → landed = 1 / didn’t = 0</div>
+    </div>
+  </div>
+
+  <div class="feedback">
+    <b>The loop</b>
+    <span><span class="flow">BAND outcomes → Pioneer training set → refit → new weights → Actian re-ranks → the graph re-clusters on screen.</span>
+    Every sponsor sits on exactly one edge of that cycle, which is why the scorer can be
+    swapped or frozen without touching anything else.</span>
+  </div>
+
+  <footer>
+    <div class="rule">
+      <strong>The rule we held to:</strong> one sponsor, one job, one artifact. Nothing is
+      used twice and nothing is decorative — remove any box and the loop stops turning.
+      <em>Guild (optional): versions the weight vectors each generation emits.</em>
+    </div>
+    <div class="proof">
+      <div class="num">F1 0.619 vs 0.549</div>
+      <div>Pioneer scorer vs embedding-cosine baseline</div>
+      <div class="sub">held-out split · AUC 0.755 vs 0.655 · +0.086 mean over 10 splits</div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
