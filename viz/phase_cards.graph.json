@@ -1,0 +1,51 @@
+{
+  "cards": [
+    {
+      "round": "DAY · R1",
+      "objective": "GRAPH · FIRST RENDER",
+      "subtitle": "Drawing the village's people as a force-directed graph.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · GRAPH READS THE /graph PAYLOAD AS-IS",
+      "script": [
+        {"speaker":"matcher","text":"Payload in: nodes, scored edges, weight vector. D3 takes it raw.","action":"speak","consensus":0.10},
+        {"speaker":"profiler","text":"Each node styled by profile: colour is domain, ring is stage.","action":"speak","consensus":0.30},
+        {"speaker":"evaluator","text":"Colour by domain sells the wrong story — topic clumps look right.","action":"disagree","consensus":0.30},
+        {"speaker":"matcher","text":"Edge thickness now tracks match score, not domain overlap.","action":"speak","consensus":0.55,"banner":"EDGES TRACK SCORE"},
+        {"speaker":"gemini","text":"Hover shows my one-line rationale straight off the edge.","action":"agree","consensus":0.75},
+        {"speaker":"profiler","text":"Sixty synthetic nodes render smooth. Layout settles fast.","action":"agree","consensus":0.90},
+        {"speaker":"matcher","text":"First render is honest to the scores. Shipped.","action":"resolve","consensus":1.0,"banner":"GRAPH LIVE"}
+      ]
+    },
+    {
+      "round": "DAY · R2",
+      "objective": "GRAPH · REASONING PANEL",
+      "subtitle": "Click a node, see why the village thinks what it thinks.",
+      "timer": 25,
+      "statusLine": "CONSENSUS · PANEL SHOWS THE WHY, NOT JUST THE WHO",
+      "script": [
+        {"speaker":"profiler","text":"Node click opens the panel: profile summary, path, the ask.","action":"speak","consensus":0.15},
+        {"speaker":"matcher","text":"Below that, top matches with my scores in order.","action":"speak","consensus":0.35},
+        {"speaker":"evaluator","text":"Scores without reasons are just numbers. Show the rationale.","action":"disagree","consensus":0.35},
+        {"speaker":"gemini","text":"Each match row expands into my full reasoning for the pair.","action":"speak","consensus":0.60,"banner":"REASONING SURFACED"},
+        {"speaker":"evaluator","text":"And flag which weight drove it — trajectory or seeking-fit.","action":"agree","consensus":0.80},
+        {"speaker":"profiler","text":"Panel reads clean at demo distance. Done.","action":"resolve","consensus":1.0,"banner":"PANEL WIRED"}
+      ]
+    },
+    {
+      "round": "NIGHT · R3",
+      "objective": "GRAPH · RE-CLUSTER ANIMATION",
+      "subtitle": "Showing the graph reshape when new weights arrive.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · THE REWEIGHT IS THE MONEY SHOT",
+      "script": [
+        {"speaker":"evaluator","text":"New weight vector lands — the graph must visibly reorganise.","action":"speak","consensus":0.10},
+        {"speaker":"matcher","text":"Re-scoring every edge, then letting the forces re-settle.","action":"speak","consensus":0.30},
+        {"speaker":"profiler","text":"A hard snap loses the story. Nobody sees what moved.","action":"disagree","consensus":0.30},
+        {"speaker":"matcher","text":"Tweening edge weights over two seconds — clumps dissolve on screen.","action":"speak","consensus":0.55,"banner":"RE-CLUSTER ANIMATED"},
+        {"speaker":"gemini","text":"Caption during the move: shared trajectory beats shared topic.","action":"agree","consensus":0.72},
+        {"speaker":"pioneer","text":"Ran it with generation-five weights. Topic clumps melt into arcs.","action":"agree","consensus":0.88},
+        {"speaker":"evaluator","text":"That animation is the demo's proof. Locked.","action":"resolve","consensus":1.0,"banner":"MONEY SHOT LOCKED"}
+      ]
+    }
+  ]
+}
