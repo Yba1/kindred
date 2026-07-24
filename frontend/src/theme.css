@@ -1,0 +1,53 @@
+/* ==========================================================================
+   KINDRED · design tokens
+   --------------------------------------------------------------------------
+   This is the ONLY file that carries visual values. Every colour, font, radius
+   and size below is referenced by app.css — nothing else hardcodes a hex.
+   Re-theming the whole surface is an edit to this file alone.
+
+   Current values are carried over from viz/village.html so `/` and `/village`
+   read as one product: same navy/purple/lamp palette, pixel type for chrome,
+   mono for anything you actually have to read.
+
+   Graph node fills live in src/graph/render.js (DOMAIN_COLORS) — they are data
+   colours, not chrome, and D3 needs them as values rather than CSS vars.
+   ========================================================================== */
+
+:root {
+  /* --- surfaces --- */
+  --bg: #0c0c1c;
+  --frame: #15152e;
+  --bar: #191933;
+  --surface: #20203f;
+  --surface-2: #25254a;
+  --border: #3a3a66;
+  --border-soft: #2a2a45;
+
+  /* --- text --- */
+  --ink: #ffffff;
+  --ink-dim: #c9c6e6;
+  --ink-mute: #9a97bd;
+
+  /* --- accents --- */
+  --accent: #b06ab0;
+  --lamp: #f4c542;
+  --edge: #6f6a9e;
+  --edge-hot: #b9a6ff;
+  --agree: #5aa860;
+  --disagree: #c05a5a;
+
+  /* --- type --- */
+  --font-pixel: "Press Start 2P", monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --fs-pixel-lg: 13px;
+  --fs-pixel: 9px;
+  --fs-pixel-sm: 7px;
+  --fs-body: 12px;
+  --fs-body-sm: 11px;
+
+  /* --- geometry --- */
+  --radius: 6px;
+  --radius-lg: 10px;
+  --panel-w: 348px;
+  --gap: 14px;
+}
