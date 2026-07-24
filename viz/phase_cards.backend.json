@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "round": "DAY · R1",
+      "objective": "BACKEND · POST /profile",
+      "subtitle": "Standing up the route that turns intake text into a profile.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · ROUTE RETURNS PATH + ASK, NOT TAGS",
+      "script": [
+        {"speaker":"profiler","text":"POST /profile is up. Intake text in, structured profile out.","action":"speak","consensus":0.10},
+        {"speaker":"gemini","text":"I take the raw text — reasoning out trajectory, stage, and the ask.","action":"speak","consensus":0.25},
+        {"speaker":"matcher","text":"First response is just topic tags. I can't rank on that.","action":"disagree","consensus":0.25},
+        {"speaker":"gemini","text":"Schema widened: path, current build, explicit seeking field.","action":"speak","consensus":0.50,"banner":"PROFILE SCHEMA LOCKED"},
+        {"speaker":"profiler","text":"Route validates the shape and rejects tag-only payloads.","action":"agree","consensus":0.70},
+        {"speaker":"actian","text":"Embedding on write — every profile lands in the vector store.","action":"agree","consensus":0.85},
+        {"speaker":"profiler","text":"POST /profile is the front door. Shipped.","action":"resolve","consensus":1.0,"banner":"ROUTE LIVE"}
+      ]
+    },
+    {
+      "round": "DAY · R2",
+      "objective": "BACKEND · ACTIAN CLIENT",
+      "subtitle": "Wiring the vector store the Matcher pulls neighbours from.",
+      "timer": 25,
+      "statusLine": "CONSENSUS · ONE CLIENT, TWO VECTOR VIEWS",
+      "script": [
+        {"speaker":"actian","text":"Client connected. Upsert on profile write, top-k pull on match.","action":"speak","consensus":0.15},
+        {"speaker":"matcher","text":"Give me 30 neighbours per query — I trim after ranking.","action":"speak","consensus":0.30},
+        {"speaker":"evaluator","text":"One embedding space clumps by topic. Those landed 41%.","action":"disagree","consensus":0.30},
+        {"speaker":"actian","text":"Indexing trajectory vectors beside the domain ones.","action":"speak","consensus":0.55,"banner":"SECOND INDEX ADDED"},
+        {"speaker":"gemini","text":"Both views come from my profile fields. No extra calls.","action":"agree","consensus":0.75},
+        {"speaker":"matcher","text":"Blended pull looks right — mixed domains, similar arcs.","action":"agree","consensus":0.90},
+        {"speaker":"actian","text":"Client stable under the demo load. Locked.","action":"resolve","consensus":1.0,"banner":"ACTIAN WIRED"}
+      ]
+    },
+    {
+      "round": "DAY · R3",
+      "objective": "BACKEND · POST /graph CONTRACT",
+      "subtitle": "Agreeing on the payload the frontend renders.",
+      "timer": 30,
+      "statusLine": "CONSENSUS · EDGES CARRY SCORE + REASONING",
+      "script": [
+        {"speaker":"matcher","text":"POST /graph drafted: nodes, edges, my scores per pair.","action":"speak","consensus":0.10},
+        {"speaker":"profiler","text":"Nodes need the profile summary or the panel has nothing to show.","action":"speak","consensus":0.30},
+        {"speaker":"evaluator","text":"Bare scores hide the why. Ship the reasoning per edge too.","action":"disagree","consensus":0.30},
+        {"speaker":"gemini","text":"Attaching my rationale string to every scored edge.","action":"speak","consensus":0.55,"banner":"REASONING IN PAYLOAD"},
+        {"speaker":"matcher","text":"Edge = pair, score, weight vector, rationale. Versioned.","action":"agree","consensus":0.75},
+        {"speaker":"actian","text":"Neighbour ids match store ids — frontend can join cleanly.","action":"agree","consensus":0.90},
+        {"speaker":"matcher","text":"Contract frozen. Frontend can build against it.","action":"resolve","consensus":1.0,"banner":"CONTRACT FROZEN"}
+      ]
+    }
+  ]
+}
