@@ -25,10 +25,10 @@ Gemini handles the two steps that need language understanding rather than vector
 Every profile is stored as two vector views — a domain view and a trajectory view — queried on every match. The retrieval layer is built against Actian's client interface with the connection point isolated (`_ActianBackend` in `backend/app/actian.py`), so plugging in a live Actian deployment is a config change, not a rewrite; today it runs on an in-process numpy cosine index seeded with 30 people so the demo has zero external dependencies.
 
 **BAND**
-BAND is the layer where the loop closes: once the Matcher and Introducer agree on a match, BAND is where the intro thread would open, carrying the generated reasoning as the first message. Narrated live in the `/village` visualization today; the real (not yet wired) integration point is `band/client.py`.
+BAND is the layer where the loop closes: once the Matcher and Introducer agree on a match, BAND is where the intro thread would open, carrying the generated reasoning as the first message. Narrated live in the `/village` visualization today.
 
 **Guild**
-Every promotion the Evaluator makes is a candidate for weight versioning — Guild's job would be tracking each accepted generation's weight vector as a reproducible, rollback-able version, so a degraded fine-tune could be reverted to a known-good state. The version history it would track already exists locally in `run.json`'s `generations[]`; the real (not yet wired) integration point is `guild/client.py`.
+Every promotion the Evaluator makes is a candidate for weight versioning — Guild's job would be tracking each accepted generation's weight vector as a reproducible, rollback-able version, so a degraded fine-tune could be reverted to a known-good state. The version history it would track already exists locally in `run.json`'s `generations[]`; the real integration point is `guild/client.py`.
 
 
 ## Structure
