@@ -5,9 +5,14 @@ Two contracts must not drift:
   /profile out — {roles, trajectory, seeking, tags, embedding}. The profile is
                  reasoning (roles + trajectory + the ask), never bare topic tags.
 
-  /graph out   — EXACTLY {center, nodes:[{id,name,score,x,y}],
-                 edges:[{source,target,weight}], reasons:{id:[str]}}.
-                 No extra keys — the frontend renders this verbatim.
+  /graph out   — {center, nodes:[{id,name,score,x,y}],
+                 edges:[{source,target,weight,features}], reasons:{id:[str]},
+                 meta:{featureNames, weights}}.
+                 The original four keys are frozen — the frontend renders them
+                 verbatim. `features` and `meta` are the ONE additive extension
+                 (workstream B's ask): the per-dim scores a learned weight vector
+                 multiplies, so the graph can re-cluster client-side. Both are
+                 ignorable — drop them and the payload is the original contract.
 """
 from __future__ import annotations
 
@@ -114,10 +119,17 @@ class GraphEdge(BaseModel):
     source: str
     target: str
     weight: float
-    # per-dim raw similarities [domain, trajectory, seeking, stage] — lets the
-    # frontend's re-cluster button rescore edges under a real weight vector
-    # instead of leaving weight pinned to whatever it was computed at
-    features: list[float] | None = None
+    # Per-dim scores, ordered over GraphMeta.featureNames, each in 0..1.
+    # weight == sum(w_i * features_i) / sum(w_i) under GraphMeta.weights.
+    features: list[float] = Field(default_factory=list)
+
+
+class GraphMeta(BaseModel):
+    """How to re-score the edges. `weights` is this service's fixed blend; the
+    Evaluator's learned vectors replace it client-side."""
+
+    featureNames: list[str] = Field(default_factory=list)  # noqa: N815 - frontend key
+    weights: list[float] = Field(default_factory=list)
 
 
 class GraphResponse(BaseModel):
@@ -125,3 +137,4 @@ class GraphResponse(BaseModel):
     nodes: list[GraphNode] = Field(default_factory=list)
     edges: list[GraphEdge] = Field(default_factory=list)
     reasons: dict[str, list[str]] = Field(default_factory=dict)
+    meta: GraphMeta = Field(default_factory=GraphMeta)
