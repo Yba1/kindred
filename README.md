@@ -13,20 +13,22 @@ Two surfaces:
   live-stream ready. See `viz/village.html`.
 
 
-Pioneer 
+## Sponsors
+
+**Pioneer / Fastino**
 Kindred's Matcher is a fine-tuned scoring model, not a fixed similarity metric. We trained a Pioneer-style classifier on labeled outcome pairs (connect / pass) and benchmarked it against an embedding-cosine baseline: F1 0.619 vs 0.549, ROC-AUC 0.755 vs 0.655, holding on a 10-seed resample sweep (wins 8/10) and a 100-pair cold-start cohort. The core insight the numbers back up: the heaviest signal isn't similarity, it's directional fit — what one person needs against what the other actually offers, which a cosine score structurally can't represent.
 
-DeepMind Gemini
+**DeepMind Gemini**
 Gemini handles the two steps that need language understanding rather than vector math: turning unstructured intake text into a structured semantic profile, and generating the natural-language reasoning the Introducer surfaces on click. The Profiler and embedding pipeline both call Gemini directly when a key is present; every path also has a deterministic fallback (regex-based profiling, hashed embeddings) so the product never hard-depends on the key being live — the same code runs the demo either way.
 
-Actian
-Every profile is stored as two vector views — a domain view and a trajectory view — queried on every match. The retrieval layer is built against Actian's client interface with the connection point isolated (_ActianBackend in backend/app/actian.py), so plugging in a live Actian deployment is a config change, not a rewrite; today it runs on an in-process numpy cosine index seeded with 30 people so the demo has zero external dependencies.
+**Actian**
+Every profile is stored as two vector views — a domain view and a trajectory view — queried on every match. The retrieval layer is built against Actian's client interface with the connection point isolated (`_ActianBackend` in `backend/app/actian.py`), so plugging in a live Actian deployment is a config change, not a rewrite; today it runs on an in-process numpy cosine index seeded with 30 people so the demo has zero external dependencies.
 
-BAND
-BAND is the layer where the loop closes: once the Matcher and Introducer agree on a match, BAND is where the intro thread would open, carrying the generated reasoning as the first message. This is currently narrated in the /village visualization — a live agent, "Introducer," acting through BAND to send the opener.
+**BAND**
+BAND is the layer where the loop closes: once the Matcher and Introducer agree on a match, BAND is where the intro thread would open, carrying the generated reasoning as the first message. Narrated live in the `/village` visualization today; the real (not yet wired) integration point is `band/client.py`.
 
-Guild
-Every promotion the Evaluator makes is a candidate for weight versioning — Guild's job would be tracking each accepted generation's weight vector as a reproducible, rollback-able version, so a degraded fine-tune could be reverted to a known-good state without touching anything else in the pipeline.
+**Guild**
+Every promotion the Evaluator makes is a candidate for weight versioning — Guild's job would be tracking each accepted generation's weight vector as a reproducible, rollback-able version, so a degraded fine-tune could be reverted to a known-good state. The version history it would track already exists locally in `run.json`'s `generations[]`; the real (not yet wired) integration point is `guild/client.py`.
 
 
 ## Structure
