@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ForceGraph from './graph/ForceGraph.jsx'
 import ReasoningPanel from './panel/ReasoningPanel.jsx'
-import IntakeForm from './intake/IntakeForm.jsx'
-import { loadGraph } from './data/loadGraph.js'
+import IntakePanel from './intake/IntakePanel.jsx'
+import { loadGraph, INTAKE_TIMEOUT_MS } from './data/loadGraph.js'
 import { GENERATIONS, DEFAULT_GENERATION } from './weights/vectors.js'
 import { FEATURE_NAMES, normalizeWeights } from './weights/rescore.js'
 import { domainColor } from './graph/render.js'
 
+const STUB_NOTICE =
+  "couldn't reach the matcher at POST /graph — this is stub data from sample_graph.json, not your real matches."
+
 export default function App() {
-  const [phase, setPhase] = useState('intake') // 'intake' | 'graph'
-  const [intakeBusy, setIntakeBusy] = useState(false)
   const [graph, setGraph] = useState(null)
   const [source, setSource] = useState('loading')
   const [error, setError] = useState(null)
@@ -18,26 +19,63 @@ export default function App() {
   const [caption, setCaption] = useState(null)
   const [scores, setScores] = useState(() => new Map())
 
+  // the intake surface: open on first load, dismissible, re-openable from the bar
+  const [intakeOpen, setIntakeOpen] = useState(true)
+  const [intakePending, setIntakePending] = useState(false)
+  const [intakeError, setIntakeError] = useState(null)
+  const [context, setContext] = useState('')
+  const [notice, setNotice] = useState(null)
+
   const controllerRef = useRef(null)
   const lastScorePush = useRef(0)
 
-  // Drop in who you are -> the graph blooms around it. loadGraph() POSTs
-  // {name, context, top_k} to the real backend and falls back to the stub
-  // payload on any failure, so this is never a dead end even with the
-  // backend down — it only throws if the stub itself is broken.
-  const beginGraph = useCallback((profile = {}) => {
-    setIntakeBusy(true)
-    loadGraph(profile)
-      .then(({ graph: g, warnings, source: src }) => {
-        if (warnings.length) console.warn('[kindred] graph payload warnings:', warnings)
-        setGraph(g)
-        setSource(src)
-        setScores(new Map(g.nodes.map((n) => [n.id, n.score])))
-        setPhase('graph')
-      })
-      .catch((err) => setError(err.message))
-      .finally(() => setIntakeBusy(false))
+  /** One landing point for a graph payload, wherever it came from. */
+  const acceptGraph = useCallback(({ graph: g, warnings, source: src }) => {
+    if (warnings.length) console.warn('[kindred] graph payload warnings:', warnings)
+    setGraph(g)
+    setSource(src)
+    setScores(new Map(g.nodes.map((n) => [n.id, n.score])))
+    setSelectedId(null)
   }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    loadGraph()
+      .then((result) => {
+        if (cancelled) return
+        acceptGraph(result)
+        if (result.source === 'stub') setNotice(STUB_NOTICE)
+      })
+      .catch((err) => !cancelled && setError(err.message))
+    return () => { cancelled = true }
+  }, [acceptGraph])
+
+  /**
+   * Intake. Re-requests the graph around this person's own context. If the
+   * backend is unreachable loadGraph still hands back the stub, so the screen
+   * is never blank — we just say plainly that it isn't theirs.
+   */
+  const submitContext = useCallback(async (text) => {
+    const next = text.trim()
+    if (!next) return
+    setIntakePending(true)
+    setIntakeError(null)
+    try {
+      const result = await loadGraph({ context: next, timeoutMs: INTAKE_TIMEOUT_MS })
+      acceptGraph(result)
+      setContext(next)
+      setNotice(result.source === 'stub' ? STUB_NOTICE : null)
+      setIntakeOpen(false)
+    } catch (err) {
+      // even the stub failed — hold the surface open and say why rather than
+      // dropping the user onto a dead screen
+      setIntakeError(`${err.message} — nothing to render for that context yet.`)
+    } finally {
+      setIntakePending(false)
+    }
+  }, [acceptGraph])
+
+  const closeIntake = useCallback(() => setIntakeOpen(false), [])
 
   /** The money shot. Re-scores every edge and lets the layout flow into it. */
   const applyWeights = useCallback((w, meta = {}) => {
@@ -102,17 +140,13 @@ export default function App() {
     )
   }
 
-  if (phase === 'intake') {
-    return <IntakeForm onSubmit={beginGraph} onSkip={() => beginGraph({})} busy={intakeBusy} />
-  }
-
   return (
     <div className="app">
       <header className="topbar">
         <span className="brand">KINDRED</span>
         <div className="topbar-text">
           <h1>SEMANTIC MATCH GRAPH</h1>
-          <p>{caption ?? 'the people closest to you in meaning — click a node for the reasoning'}</p>
+          <p title={context || undefined}>{caption ?? subtitle(context, source)}</p>
         </div>
 
         <div className="weights" title="the weight vector the graph is laid out under">
@@ -138,8 +172,24 @@ export default function App() {
           ))}
         </div>
 
+        <button
+          className="intake-open"
+          onClick={() => { setIntakeError(null); setIntakeOpen(true) }}
+          title={context ? `your context: ${context}` : 'drop your context — the graph rebuilds around you'}
+        >
+          {context ? 'EDIT CONTEXT' : 'YOUR CONTEXT'}
+        </button>
+
         <a className="village-link" href="/village">VILLAGE →</a>
       </header>
+
+      {notice && (
+        <div className="notice" role="status">
+          <span className="notice-tag">STUB</span>
+          <span className="notice-text">{notice}</span>
+          <button className="notice-x" onClick={() => setNotice(null)} aria-label="dismiss notice">×</button>
+        </div>
+      )}
 
       <main className="stage">
         <div className="graph-col">
@@ -164,18 +214,41 @@ export default function App() {
       </main>
 
       <footer className="statusbar">
-        <span className={`chip chip-${source}`}>
-          {source === 'stub' ? 'STUB DATA · sample_graph.json' : source === 'live' ? 'LIVE · /graph' : 'LOADING…'}
-        </span>
+        <span className={`chip chip-${source}`}>{sourceLabel(source, context)}</span>
         <span className="status-text">
           edge thickness = match score · node size = tie to you · drag to rearrange, scroll to zoom
         </span>
         <span className="spacer" />
         <span className="status-gen">{genLabel} · w = [{wn.map((x) => x.toFixed(2)).join(', ')}]</span>
       </footer>
+
+      <IntakePanel
+        open={intakeOpen}
+        pending={intakePending}
+        error={intakeError}
+        submitted={Boolean(context)}
+        onSubmit={submitContext}
+        onClose={closeIntake}
+      />
     </div>
   )
 }
+
+/** Says whose graph this is — and, on stub, says plainly that it isn't yours. */
+function sourceLabel(source, context) {
+  if (source === 'live') return context ? 'LIVE · YOUR GRAPH' : 'LIVE · /graph'
+  if (source === 'stub') return context ? 'STUB DATA · NOT YOUR MATCHES' : 'STUB DATA · sample_graph.json'
+  return 'LOADING…'
+}
+
+/** Never claims a match the backend didn't actually make. */
+const subtitle = (context, source) => {
+  if (!context) return 'the people closest to you in meaning — click a node for the reasoning'
+  const verb = source === 'live' ? 'matched on your context' : 'your context'
+  return `${verb}: “${truncate(context, 92)}”`
+}
+
+const truncate = (s, n) => (s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s)
 
 /** Colour is problem space, and it stays put while positions move. */
 function Legend({ graph }) {
