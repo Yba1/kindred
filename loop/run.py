@@ -70,6 +70,16 @@ def _run_live(args: argparse.Namespace) -> int:
     events = narrate(result)
     run = write_run(result, events, path="run.json")
 
+    # Version every accepted generation. Simulated (see guild/README.md) —
+    # real data in, no real network call out.
+    try:
+        from guild.client import push_generation
+        for g in result.generations:
+            record = push_generation(g.gen, list(g.weights), g.rate)
+            print(f"[guild:simulated] gen {record.generation} -> {record.version_id} (rate {record.held_out_rate:.0%})")
+    except ImportError:
+        pass  # guild/ not on the path — versioning is optional, never blocks the loop
+
     print(summarize(run))
 
     gens = run.get("generations", [])

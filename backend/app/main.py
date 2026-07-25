@@ -18,6 +18,7 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
 
 from . import __version__
 from .config import settings
@@ -27,6 +28,23 @@ from .matcher import rank
 from .profiler import build_profile, profiler_mode
 from .schemas import GraphRequest, GraphResponse, Profile, ProfileOut, ProfileRequest
 from .store import store
+
+try:
+    from band.client import band_enabled, send_intro
+except ImportError:
+    # band/ lives at the repo root, one level above backend/ — not on
+    # sys.path when uvicorn is launched with cwd=backend/. Add it once and
+    # retry before giving up (rather than silently degrading /introduce).
+    import sys as _sys
+    from pathlib import Path as _Path
+    _repo_root = str(_Path(__file__).resolve().parents[2])
+    if _repo_root not in _sys.path:
+        _sys.path.insert(0, _repo_root)
+    try:
+        from band.client import band_enabled, send_intro
+    except ImportError:
+        band_enabled = None
+        send_intro = None
 
 app = FastAPI(title="Kindred backend", version=__version__)
 
@@ -83,6 +101,27 @@ def graph(req: GraphRequest) -> GraphResponse:
 @app.get("/people")
 def people() -> dict:
     return {"count": store.count(), "people": [p.model_dump() for p in store.all()]}
+
+
+class IntroduceRequest(BaseModel):
+    user_id: str = "user"
+    match_id: str
+    reasoning: list[str] = []
+
+
+@app.post("/introduce")
+def introduce(req: IntroduceRequest) -> dict:
+    """Open the intro thread BAND would send. SIMULATED — see band/README.md.
+    Real reasoning in, a real opener out; no real network call to BAND."""
+    if send_intro is None:
+        raise HTTPException(status_code=503, detail="band/ package not importable")
+    thread = send_intro(req.user_id, req.match_id, req.reasoning)
+    return {
+        "thread_id": thread.thread_id,
+        "match_id": thread.match_id,
+        "opener": thread.opener,
+        "simulated": thread.simulated,
+    }
 
 
 # --------------------------------------------------------------------------- #
